@@ -10,12 +10,12 @@ export interface InjectedStore extends Store {
 }
 
 export interface InjectReducerParams {
-  key: keyof AppState;
+  key: string;
   reducer: Reducer<any, any>;
 }
 
 export interface InjectSagaParams {
-  key: keyof AppState;
+  key: string;
   saga: Saga;
   mode?: SagaInjectionModes;
 }
