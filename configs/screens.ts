@@ -1,12 +1,12 @@
 // Screen names
-export const LOGIN_SCREEN = 'LOGIN_SCREEN';
+export const HOME_SCREEN = 'HOME_SCREEN';
 
 // Screens
-import Login from '../screens/Login';
+import Home from '../screens/Home';
 
 // Types
 import { ReactElement } from 'react';
 
 export default {
-  [LOGIN_SCREEN]: Login,
+  [HOME_SCREEN]: Home,
 };

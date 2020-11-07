@@ -10,7 +10,3 @@ export interface LoginActionType {
   type: typeof LOGIN;
   payload: LoginPayload;
 }
-
-export interface LoginFormProps {
-  onSubmit: (data: LoginPayload) => void;
-}

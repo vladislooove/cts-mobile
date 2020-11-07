@@ -7,6 +7,6 @@ import { LOGIN } from '../constants';
 // Sagas
 import login from './login';
 
-export default function* loginSaga() {
+export default function* homeSaga() {
   yield takeLatest(LOGIN, login);
 }
