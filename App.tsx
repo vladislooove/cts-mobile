@@ -10,12 +10,15 @@ import store from './store';
 // Screens
 import screens from './configs/screens';
 
+// Services
+import navigationService from './services/navigation';
+
 const Stack = createStackNavigator();
 
 export default function Application(): ReactElement {
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer ref={navigationService.ref}>
         <Stack.Navigator>
           {Object.entries(screens).map(([name, component]) => (
             <Stack.Screen name={name} component={component} key={name} />

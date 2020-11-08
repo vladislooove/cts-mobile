@@ -1,9 +1,12 @@
+// Constants
+import { BASE_URL } from '../constants';
+
 // Types
 import { IUserService, LoginPayload, LoginResponse } from './types';
 
 export default class UserService implements IUserService {
   public async login({ email, password }: LoginPayload): LoginResponse {
-    const response = await fetch('https://dev.cthesigns.co.uk/api/login', {
+    const response = await fetch(`${BASE_URL}/api/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
