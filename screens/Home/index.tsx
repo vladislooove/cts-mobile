@@ -15,9 +15,6 @@ import saga from './sagas';
 // Actions
 import { login } from './actions';
 
-// Types
-import { LoginPayload } from './types';
-
 export const Home = (): ReactElement => {
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(false);
   const [email, setEmail] = useState('');
