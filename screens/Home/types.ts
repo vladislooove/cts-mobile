@@ -1,10 +1,8 @@
 // Constants
 import { LOGIN } from './constants';
 
-export interface LoginPayload {
-  email: string;
-  password: string;
-}
+// Types
+import { LoginPayload } from '../../services/user/types';
 
 export interface LoginActionType {
   type: typeof LOGIN;
