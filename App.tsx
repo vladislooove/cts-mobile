@@ -20,8 +20,8 @@ export default function Application(): ReactElement {
     <Provider store={store}>
       <NavigationContainer ref={navigationService.ref}>
         <Stack.Navigator>
-          {Object.entries(screens).map(([name, component]) => (
-            <Stack.Screen name={name} component={component} key={name} />
+          {Object.entries(screens).map(([name, props]) => (
+            <Stack.Screen name={name} key={name} {...props} />
           ))}
         </Stack.Navigator>
       </NavigationContainer>

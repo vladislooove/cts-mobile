@@ -1,5 +1,5 @@
 // Libs
-import React, { ReactElement, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { View, TextInput, Button } from 'react-native';
 import { useDispatch } from 'react-redux';
 
@@ -7,7 +7,8 @@ import { useDispatch } from 'react-redux';
 import { useInjectSaga } from '../../hooks/reduxInjectors';
 
 // Constants
-import { LOGIN, HOME_SAGA } from './constants';
+import { SIGNUP_SCREEN } from '../../configs/screens';
+import { HOME_SAGA } from './constants';
 
 // Saga
 import saga from './sagas';
@@ -15,7 +16,10 @@ import saga from './sagas';
 // Actions
 import { login } from './actions';
 
-export const Home = (): ReactElement => {
+// Services
+import navigationService from '../../services/navigation';
+
+export const Home: FC = () => {
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,6 +36,10 @@ export const Home = (): ReactElement => {
     }
 
     setIsLoginFormVisible(true);
+  };
+
+  const handleSignup = () => {
+    navigationService.navigate(SIGNUP_SCREEN);
   };
 
   return (
@@ -53,7 +61,11 @@ export const Home = (): ReactElement => {
         </>
       )}
       <Button
-        title="Login"
+        title="Sign Up"
+        onPress={handleSignup}
+      />
+      <Button
+        title="Log In"
         onPress={handleLogin}
       />
     </View>

@@ -2,12 +2,12 @@
 import React, { FC } from 'react';
 import { View } from 'react-native';
 
-export const Dashboard: FC = () => {
+export const Signup: FC = () => {
   return (
     <View>
-      Dashboard
+      Signup
     </View>
   );
 };
 
-export default Dashboard;
+export default Signup;

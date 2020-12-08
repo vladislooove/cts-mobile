@@ -1,13 +1,14 @@
 // Libs
-import { createRef } from 'react';
+import { createRef, Ref } from 'react';
 
 // Types
 import { INavigation } from './types';
+import { NavigationContainerRef } from '@react-navigation/native';
 
 export default class Navigation implements INavigation {
-  public ref = createRef();
+  public ref: Ref<NavigationContainerRef> = createRef();
 
-  public navigate(name, props) {
+  public navigate(name, props?) {
     this.ref.current?.navigate(name, props);
   }
 }
