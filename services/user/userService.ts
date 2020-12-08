@@ -5,7 +5,7 @@ import { BASE_URL } from '../constants';
 import { IUserService, LoginPayload, LoginResponse } from './types';
 
 export default class UserService implements IUserService {
-  public async login({ email, password }: LoginPayload): LoginResponse {
+  public async login({ email, password }) {
     const response = await fetch(`${BASE_URL}/api/login`, {
       method: 'POST',
       headers: {

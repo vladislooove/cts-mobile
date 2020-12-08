@@ -1,5 +1,5 @@
 export interface IUserService {
-  login: (data: LoginPayload) => LoginResponse;
+  login: (data: LoginPayload) => Promise<LoginResponse>;
 }
 
 export interface LoginPayload {
