@@ -1,8 +1,14 @@
+// Libs
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 // Effects
-import { call } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 
 // Types
 import { LoginActionType } from '../types';
+
+// Actions
+import { setAuth } from '../actions';
 
 // Constants
 import { DASHBOARD_SCREEN } from '../../../configs/screens';
@@ -12,6 +18,9 @@ import userService from '../../../services/user';
 import navigationService from '../../../services/navigation';
 
 export default function* login({ payload }: LoginActionType) {
-  yield call([userService, userService.login], payload);
+  const { accessToken, refreshToken } = yield call([userService, userService.login], payload);
+  yield put(setAuth(true));
+  yield AsyncStorage.setItem('accessToken', accessToken);
+  yield AsyncStorage.setItem('refreshToken', refreshToken);
   yield call([navigationService, navigationService.navigate], DASHBOARD_SCREEN);
 }

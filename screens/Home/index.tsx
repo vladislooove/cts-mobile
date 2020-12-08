@@ -1,20 +1,23 @@
 // Libs
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { View, TextInput, Button } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 // Utils
-import { useInjectSaga } from '../../hooks/reduxInjectors';
+import { useInjectSaga, useInjectReducer } from '../../hooks/reduxInjectors';
 
 // Constants
 import { SIGNUP_SCREEN } from '../../configs/screens';
-import { HOME_SAGA } from './constants';
+import { HOME_SAGA, HOME_REDUCER } from './constants';
 
 // Saga
 import saga from './sagas';
 
+// Reducer
+import reducer from './reducer';
+
 // Actions
-import { login } from './actions';
+import { login, initApp } from './actions';
 
 // Services
 import navigationService from '../../services/navigation';
@@ -25,7 +28,13 @@ export const Home: FC = () => {
   const [password, setPassword] = useState('');
 
   useInjectSaga({ key: HOME_SAGA, saga });
+  useInjectReducer({ key: HOME_REDUCER, reducer });
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initApp());
+  }, [dispatch]);
 
   const handleLogin = () => {
     if (isLoginFormVisible) {
