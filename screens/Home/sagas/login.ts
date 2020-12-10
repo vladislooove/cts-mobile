@@ -8,7 +8,7 @@ import { call, put } from 'redux-saga/effects';
 import { LoginActionType } from '../types';
 
 // Actions
-import { setAuth } from '../actions';
+import { setAuth } from '../../../containers/App/actions';
 
 // Constants
 import { DASHBOARD_SCREEN } from '../../../configs/screens';
