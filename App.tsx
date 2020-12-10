@@ -23,7 +23,7 @@ export default function Application(): ReactElement {
     <Provider store={store}>
       <App>
         <NavigationContainer ref={navigationService.ref}>
-          <Stack.Navigator>
+          <Stack.Navigator screenOptions={{ header: () => null }}>
             {Object.entries(screens).map(([name, props]) => (
               <Stack.Screen name={name} key={name} {...props} />
             ))}

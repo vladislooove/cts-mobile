@@ -11,17 +11,11 @@ import Signup from '../screens/Signup';
 export default {
   [HOME_SCREEN]: {
     component: Home,
-    options: {
-      header: () => null,
-    },
   },
   [DASHBOARD_SCREEN]: {
     component: Dashboard,
   },
   [SIGNUP_SCREEN]: {
     component: Signup,
-    options: {
-      title: '',
-    },
   },
 };
