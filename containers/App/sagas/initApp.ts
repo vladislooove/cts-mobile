@@ -8,7 +8,7 @@ import {call, put } from 'redux-saga/effects';
 import { setAuth, setCcgs, setPractices } from '../actions';
 
 // Constants
-import { DASHBOARD_SCREEN } from '../../../configs/screens';
+import { DASHBOARD_SCREEN } from '../../../configs/routing/constants';
 
 // Services
 import ccgService from '../../../services/ccgs';

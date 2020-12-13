@@ -11,7 +11,7 @@ import { LoginActionType } from '../types';
 import { setAuth } from '../../../containers/App/actions';
 
 // Constants
-import { DASHBOARD_SCREEN } from '../../../configs/screens';
+import { DASHBOARD_SCREEN } from '../../../configs/routing/constants';
 
 // Services
 import userService from '../../../services/user';

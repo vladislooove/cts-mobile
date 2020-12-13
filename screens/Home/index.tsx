@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useInjectSaga } from '../../hooks/reduxInjectors';
 
 // Constants
-import { SIGNUP_SCREEN } from '../../configs/screens';
+import { SIGNUP_SCREEN } from '../../configs/routing/constants';
 import { HOME_SAGA } from './constants';
 
 // Saga
@@ -47,7 +47,7 @@ export const Home: FC = () => {
   };
 
   return (
-    <View>
+    <View style={styles.wrapper}>
       <ImageBackground source={require('../../assets/home-bg.jpg')} style={styles.containerImage} />
       <View style={styles.container}>
         <View>
@@ -67,14 +67,20 @@ export const Home: FC = () => {
               />
             </>
           )}
-          <Button
-            title="Sign Up"
-            onPress={handleSignup}
-          />
-          <Button
-            title="Log In"
-            onPress={handleLogin}
-          />
+          <View style={styles.buttonsWrapper}>
+            <View style={styles.buttonWrapper}>
+              <Button
+                title="Sign Up"
+                onPress={handleSignup}
+              />
+            </View>
+            <View style={styles.buttonWrapper}>
+              <Button
+                title="Log In"
+                onPress={handleLogin}
+              />
+            </View>
+          </View>
         </View>
       </View>
     </View>

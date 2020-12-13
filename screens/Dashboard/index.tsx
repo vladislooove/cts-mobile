@@ -5,7 +5,6 @@ import { View } from 'react-native';
 export const Dashboard: FC = () => {
   return (
     <View>
-      Dashboard
     </View>
   );
 };
