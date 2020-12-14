@@ -12,4 +12,8 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  appWrapper: {
+    position: 'relative',
+    flex: 1,
+  },
 });

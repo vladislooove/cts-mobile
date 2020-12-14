@@ -28,5 +28,5 @@ export default function* initApp() {
     yield call([navigationService, navigationService.navigate], DASHBOARD_SCREEN);
   }
 
-  // yield put(setLoading(false));
+  yield put(setLoading(false));
 }

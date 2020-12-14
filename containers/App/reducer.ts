@@ -8,7 +8,7 @@ const initialState = {
   [AUTHORIZED]: false,
   [CCGS]: [],
   [PRACTICES]: [],
-  [LOADING]: true,
+  [LOADING]: false,
 };
 
 export default (state: AppReducerState = initialState, { type, payload }: SetAuthActionType | SetCcgsActionType | SetPracticesActionType) => {

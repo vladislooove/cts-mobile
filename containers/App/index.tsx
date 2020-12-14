@@ -32,14 +32,14 @@ export const AppContainer: FC = ({ children }) => {
   }, [dispatch]);
 
   return (
-    <>
+    <View style={styles.appWrapper}>
       {loading && (
         <View style={styles.loaderWrapper}>
           <ActivityIndicator size="large" color={COLOR_SECONDARY} />
         </View>
       )}
       {children}
-    </>
+    </View>
   );
 };
 
