@@ -1,13 +1,13 @@
 // Libs
 import React, { FC, useState } from 'react';
-import { View, TextInput, Button, ImageBackground } from 'react-native';
+import { View, TextInput, Button, ImageBackground, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 // Utils
 import { useInjectSaga } from '../../hooks/reduxInjectors';
 
 // Constants
-import { SIGNUP_SCREEN } from '../../configs/routing/constants';
+import { SIGNUP_SCREEN, FORGOT_PASSWORD_SCREEN } from '../../configs/routing/constants';
 import { HOME_SAGA } from './constants';
 
 // Saga
@@ -46,6 +46,10 @@ export const Home: FC = () => {
     navigationService.navigate(SIGNUP_SCREEN);
   };
 
+  const handleForgotPassword = () => {
+    navigationService.navigate(FORGOT_PASSWORD_SCREEN);
+  };
+
   return (
     <View style={styles.wrapper}>
       <ImageBackground source={require('../../assets/home-bg.jpg')} style={styles.containerImage} />
@@ -81,6 +85,9 @@ export const Home: FC = () => {
               />
             </View>
           </View>
+          <Text style={styles.linkWrapper} onPress={handleForgotPassword}>
+            Forgot password?
+          </Text>
         </View>
       </View>
     </View>

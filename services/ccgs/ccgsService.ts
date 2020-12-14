@@ -12,7 +12,18 @@ export default class CcgsService implements ICcgsService {
         'Content-Type': 'application/json',
       },
     });
-
-    return response.json();
+    const status = response.status;
+    let result = null;
+    
+    try {
+      result = await response.json();
+    } catch {
+      result = null;
+    }
+    
+    return {
+      status,
+      response: result,
+    };
   }
 }

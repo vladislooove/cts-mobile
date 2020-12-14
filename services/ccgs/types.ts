@@ -1,5 +1,8 @@
+// Types
+import { Response } from '../types';
+
 export interface ICcgsService {
-  getAll: () => Promise<Ccg[]>;
+  getAll: () => Promise<Response<Ccg[]>>;
 }
 
 export interface Ccg {

@@ -1,5 +1,8 @@
+// Types
+import { Response } from '../types';
+
 export interface IUserService {
-  login: (data: LoginPayload) => Promise<LoginResponse>;
+  login: (data: LoginPayload) => Promise<Response<LoginResponse>>;
 }
 
 export interface LoginPayload {

@@ -8,5 +8,5 @@ import { LOGIN } from '../constants';
 import login from './login';
 
 export default function* homeSaga() {
-  // yield takeLatest(LOGIN, login);
+  yield takeLatest(LOGIN, login);
 }

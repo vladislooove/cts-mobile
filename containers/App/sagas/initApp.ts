@@ -19,14 +19,14 @@ export default function* initApp() {
   yield put(setLoading(true));
   const token = yield AsyncStorage.getItem('accessToken');
   yield put(setAuth(!!token));
-  const ccgs = yield call([ccgService, ccgService.getAll]);
-  const practices = yield call([practicesService, practicesService.getAll]);
-  yield put(setCcgs(ccgs));
-  yield put(setPractices(practices));
 
   if (!!token) {
     yield call([navigationService, navigationService.navigate], DASHBOARD_SCREEN);
   }
 
+  const { response: ccgs } = yield call([ccgService, ccgService.getAll]);
+  const { response: practices } = yield call([practicesService, practicesService.getAll]);
+  yield put(setCcgs(ccgs));
+  yield put(setPractices(practices));
   yield put(setLoading(false));
 }

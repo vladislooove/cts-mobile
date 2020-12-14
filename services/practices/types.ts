@@ -1,5 +1,8 @@
+// Types
+import { Response } from '../types';
+
 export interface IPracticesService {
-  getAll: () => Promise<Practice[]>;
+  getAll: () => Promise<Response<Practice[]>>;
 }
 
 export interface Practice {

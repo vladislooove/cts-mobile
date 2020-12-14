@@ -1,6 +1,9 @@
 // Libs
 import { StyleSheet } from 'react-native';
 
+// Styles
+import { COLOR_WHITE } from '../../styles/constants';
+
 export default StyleSheet.create({
   wrapper: {
     flex: 1,
@@ -17,7 +20,6 @@ export default StyleSheet.create({
     right: 0,
     bottom: 0,
     left: 0,
-    resizeMode: 'cover',
   },
   buttonsWrapper: {
     flexDirection: 'row',
@@ -28,5 +30,11 @@ export default StyleSheet.create({
     width: '50%',
     paddingRight: 10,
     paddingLeft: 10,
+    paddingBottom: 30,
+  },
+  linkWrapper: {
+    textAlign: 'right',
+    color: COLOR_WHITE,
+    paddingBottom: 10,
   }
 });

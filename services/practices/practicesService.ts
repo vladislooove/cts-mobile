@@ -12,7 +12,18 @@ export default class PracticesService implements IPracticesService {
         'Content-Type': 'application/json',
       },
     });
+    const status = response.status;
+    let result = null;
+    
+    try {
+      result = await response.json();
+    } catch {
+      result = null;
+    }
 
-    return response.json();
+    return {
+      status,
+      response: result,
+    };
   }
 }
