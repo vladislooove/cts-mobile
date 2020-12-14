@@ -1,16 +1,17 @@
 // Constants
-import { SET_AUTH, AUTHORIZED, CCGS, SET_CCGS, PRACTICES, SET_PRACTICES } from './constants';
+import { SET_AUTH, AUTHORIZED, CCGS, SET_CCGS, PRACTICES, SET_PRACTICES, LOADING, SET_LOADING } from './constants';
 
 // Types
-import { HomeReducerState, SetAuthActionType, SetCcgsActionType, SetPracticesActionType } from './types';
+import { AppReducerState, SetAuthActionType, SetCcgsActionType, SetPracticesActionType, SetLoadingActionType } from './types';
 
 const initialState = {
   [AUTHORIZED]: false,
   [CCGS]: [],
   [PRACTICES]: [],
+  [LOADING]: true,
 };
 
-export default (state: HomeReducerState = initialState, { type, payload }: SetAuthActionType | SetCcgsActionType | SetPracticesActionType) => {
+export default (state: AppReducerState = initialState, { type, payload }: SetAuthActionType | SetCcgsActionType | SetPracticesActionType) => {
   switch (type) {
     case SET_AUTH:
       return {
@@ -26,6 +27,11 @@ export default (state: HomeReducerState = initialState, { type, payload }: SetAu
       return {
         ...state,
         [PRACTICES]: payload,
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        [LOADING]: payload,
       };
     default:
       return state;

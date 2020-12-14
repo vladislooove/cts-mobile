@@ -8,8 +8,10 @@ export const SET_AUTH = `${APP_PREFIX}/SET_AUTH`;
 export const INIT_APP = `${APP_PREFIX}/INIT_APP`;
 export const SET_CCGS = `${APP_PREFIX}/SET_CCGS`;
 export const SET_PRACTICES = `${APP_PREFIX}/SET_PRACTICES`;
+export const SET_LOADING = `${APP_PREFIX}/SET_LOADING`;
 
 // State
 export const AUTHORIZED = 'AUTHORIZED';
 export const CCGS = 'CCGS';
 export const PRACTICES = 'PRACTICES';
+export const LOADING = 'LOADING';

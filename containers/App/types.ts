@@ -1,5 +1,5 @@
 // Constants
-import { SET_AUTH, AUTHORIZED, INIT_APP, SET_CCGS, CCGS, PRACTICES, SET_PRACTICES } from './constants';
+import { SET_AUTH, AUTHORIZED, INIT_APP, SET_CCGS, CCGS, PRACTICES, SET_PRACTICES, SET_LOADING, LOADING } from './constants';
 
 // Types
 import { Ccg } from '../../services/ccgs/types';
@@ -25,9 +25,15 @@ export interface SetPracticesActionType {
   payload: Practice[];
 }
 
+export interface SetLoadingActionType {
+  type: typeof SET_LOADING;
+  payload: boolean;
+}
+
 // Data interfaces
 export interface AppReducerState {
   [AUTHORIZED]: boolean;
   [CCGS]: Ccg[];
   [PRACTICES]: Practice[];
+  [LOADING]: boolean;
 }
