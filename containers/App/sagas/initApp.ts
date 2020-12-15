@@ -21,7 +21,12 @@ export default function* initApp() {
   yield put(setAuth(!!token));
 
   if (!!token) {
-    yield call([navigationService, navigationService.navigate], DASHBOARD_SCREEN);
+    yield call([navigationService, navigationService.reset], {
+      index: 0,
+      routes: [
+        { name: DASHBOARD_SCREEN },
+      ],  
+    });
   }
 
   const { response: ccgs } = yield call([ccgService, ccgService.getAll]);

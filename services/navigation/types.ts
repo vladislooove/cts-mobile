@@ -1,8 +1,9 @@
 // Types
-import { Ref } from 'react';
-import { NavigationContainerRef } from '@react-navigation/native';
+import { RefObject } from 'react';
+import { NavigationContainerRef, NavigationState } from '@react-navigation/native';
 
 export interface INavigation {
-  ref: Ref<NavigationContainerRef>;
+  ref: RefObject<NavigationContainerRef>;
   navigate: (name: string, params?: { [key: string]: any }) => void;
+  reset: (state: Partial<NavigationState>) => void;
 }
