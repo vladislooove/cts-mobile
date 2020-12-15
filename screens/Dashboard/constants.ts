@@ -1,0 +1,11 @@
+// Module constants
+export const DASHBOARD_SAGA = 'DASHBOARD_SAGA';
+export const DASHBOARD_REDUCER = 'DASHBOARD_REDUCER';
+export const DASHBOARD_PREFIX = 'DASHBOARD';
+
+// Action types
+export const GET_NOTIFICATIONS = 'GET_NOTIFICATIONS';
+export const SET_NOTIFICATIONS = 'SET_NOTIFICATIONS';
+
+// State
+export const NOTIFICATIONS = 'NOTIFICATIONS';
