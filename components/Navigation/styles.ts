@@ -22,6 +22,6 @@ export default StyleSheet.create({
   },
   menuActiveLink: {
     borderColor: COLOR_SECONDARY,
-    backgroundColor: COLOR_SECONDARY,
+    backgroundColor: 'rgb(217, 240, 248)'
   },
 });

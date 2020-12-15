@@ -14,7 +14,7 @@ import styles from './styles';
 
 export const Navigation: FC = () => {
   const routes = useNavigationState((state) => state.routes);
-  const activeScreen = routes[routes.length]?.name;
+  const activeScreen = routes[routes.length - 1]?.name;
 
   const onLinkClick = (route: string) => {
     navigationService.navigate(route);
@@ -28,9 +28,11 @@ export const Navigation: FC = () => {
   return (
     <View style={styles.wrapper}>
       <View>
-        <Text>
-          Back
-        </Text>
+        {activeScreen !== DASHBOARD_SCREEN && (
+          <Text>
+            Back
+          </Text>
+        )}
       </View>
       <View style={styles.linksWrapper}>
         <TouchableNativeFeedback onPress={() => onLinkClick(DASHBOARD_SCREEN)}>
