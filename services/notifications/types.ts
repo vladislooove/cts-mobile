@@ -25,7 +25,7 @@ export interface Notification {
   noticeHeader: string;
   noticeIssuer: string;
   pinned: boolean;
-  startDate: strin | null;
+  startDate: string | null;
   type: string;
 }
 

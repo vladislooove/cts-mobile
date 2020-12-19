@@ -2,7 +2,7 @@
 import { StyleSheet } from 'react-native';
 
 // Styles
-import { COLOR_PRIMARY, COLOR_SECONDARY } from '../../styles/constants';
+import { COLOR_PRIMARY, COLOR_SECONDARY, COLOR_WHITE } from '../../styles/constants';
 
 export default StyleSheet.create({
   wrapper: {
@@ -10,6 +10,7 @@ export default StyleSheet.create({
     paddingBottom: 10,
     justifyContent: 'space-between',
     flexDirection: 'row',
+    backgroundColor: COLOR_WHITE
   },
   linksWrapper: {
     flexDirection: 'row',

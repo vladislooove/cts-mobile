@@ -1,10 +1,12 @@
 // Libs
 import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { View } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 
 // Components
 import Navigation from '../../components/Navigation';
+import Title from '../../components/Title';
+import Notifications from './components/Notifications';
 
 // Utils
 import { useInjectSaga, useInjectReducer } from '../../hooks/reduxInjectors';
@@ -21,6 +23,9 @@ import saga from './sagas';
 // Reducer
 import reducer from './reducer';
 
+// Styles
+import styles from './styles';
+
 export const Dashboard: FC = () => {
   const dispatch = useDispatch();
   
@@ -32,8 +37,17 @@ export const Dashboard: FC = () => {
   }, [dispatch]);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Navigation />
+      <View style={styles.wrapper}>
+        <ImageBackground source={require('../../assets/dashboard-bg.jpg')} style={styles.containerImage} />
+        <View style={styles.titleWrapper}>
+          <Title>
+            Welcome
+          </Title>
+        </View>
+        <Notifications />
+      </View>
     </View>
   );
 };
