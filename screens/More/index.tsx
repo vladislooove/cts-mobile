@@ -1,6 +1,6 @@
 // Libs
 import React, { FC } from 'react';
-import { View, TouchableNativeFeedback, Text, Button } from 'react-native';
+import { View, TouchableNativeFeedback, Text, Button, Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 // Components
@@ -38,7 +38,23 @@ export const More: FC = () => {
   const dispatch = useDispatch();
   useInjectSaga({ key: MORE_SAGA, saga });
 
-  const handleLogout = () => dispatch(logout());
+  const handleLogout = () => {
+    Alert.alert(
+      '',
+      'Are you sure you want to log out?',
+      [
+        {
+          style: 'cancel',
+          text: 'Cancel',
+        },
+        {
+          text: 'OK',
+          onPress: () => dispatch(logout()),
+        },
+      ],
+      { cancelable: true }
+    );
+  };
 
   const svgIconProps = {
     width: 75,
