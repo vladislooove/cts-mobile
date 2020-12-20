@@ -19,4 +19,15 @@ export default StyleSheet.create({
     bottom: 0,
     left: 0,
   },
+  buttonsWrapper: {
+    paddingTop: 30,
+    marginLeft: -15,
+    marginRight: -15,
+    flexDirection: 'row',
+  },
+  buttonWrapper: {
+    paddingLeft: 15,
+    paddingRight: 15,
+    width: '50%',
+  }
 });

@@ -1,7 +1,7 @@
 // Libs
 import React, { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { View, ImageBackground } from 'react-native';
+import { View, ImageBackground, Button } from 'react-native';
 
 // Components
 import Navigation from '../../components/Navigation';
@@ -15,6 +15,7 @@ import { useInjectSaga, useInjectReducer } from '../../hooks/reduxInjectors';
 import { getNotifications } from './actions';
 
 // Constants
+import { SYSTEM_SCREEN, SEARCH_SCREEN } from '../../configs/routing/constants';
 import { DASHBOARD_SAGA, DASHBOARD_REDUCER } from './constants';
 
 // Saga
@@ -25,6 +26,9 @@ import reducer from './reducer';
 
 // Styles
 import styles from './styles';
+
+// Services
+import navigationService from '../../services/navigation';
 
 export const Dashboard: FC = () => {
   const dispatch = useDispatch();
@@ -47,6 +51,20 @@ export const Dashboard: FC = () => {
           </Title>
         </View>
         <Notifications />
+        <View style={styles.buttonsWrapper}>
+          <View style={styles.buttonWrapper}>
+            <Button
+              title="System"
+              onPress={() => navigationService.navigate(SYSTEM_SCREEN)}
+            />
+          </View>
+          <View style={styles.buttonWrapper}>
+            <Button
+              title="Search"
+              onPress={() => navigationService.navigate(SEARCH_SCREEN)}
+            />
+          </View>
+        </View>
       </View>
     </View>
   );

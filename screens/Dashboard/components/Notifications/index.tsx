@@ -1,6 +1,6 @@
 // Libs
 import React, { FC } from 'react';
-import { View, Image, Text, FlatList, ListRenderItemInfo } from 'react-native';
+import { View, Image, Text, FlatList, ListRenderItemInfo, Linking, TouchableNativeFeedback } from 'react-native';
 import { useSelector } from 'react-redux';
 
 // Selectors
@@ -17,26 +17,31 @@ export const Notifications: FC = () => {
 
   const renderNotification = ({ item }: ListRenderItemInfo<Notification>) => {
     const notificationDate = new Date(item.createdAt);
+    const onNotificationPress = item.noticeAttributes.length
+      ? () => Linking.openURL(item.noticeAttributes[0]?.url)
+      : undefined;``
     const formatDateUnit = (u: number) => u > 9 ? u : `0${u}`;
 
     return (
-      <View style={styles.notification}>
-        <View style={styles.notificationHeader}>
-          <Text style={styles.notificationTitle}>
-            {item.noticeHeader}
-          </Text>
-          <Text style={styles.notificationDate}>
-            {formatDateUnit(notificationDate.getDate())}
-            {'.'}
-            {formatDateUnit(notificationDate.getMonth() + 1)}
-            {'.'}
-            {notificationDate.getFullYear()}
+      <TouchableNativeFeedback onPress={onNotificationPress}>
+        <View style={styles.notification} >
+          <View style={styles.notificationHeader}>
+            <Text style={styles.notificationTitle}>
+              {item.noticeHeader}
+            </Text>
+            <Text style={styles.notificationDate}>
+              {formatDateUnit(notificationDate.getDate())}
+              {'.'}
+              {formatDateUnit(notificationDate.getMonth() + 1)}
+              {'.'}
+              {notificationDate.getFullYear()}
+            </Text>
+          </View>
+          <Text style={styles.notificationText}>
+            {item.noticeDescription}
           </Text>
         </View>
-        <Text style={styles.notificationText}>
-          {item.noticeDescription}
-        </Text>
-      </View>
+      </TouchableNativeFeedback>
     );
   };
 
