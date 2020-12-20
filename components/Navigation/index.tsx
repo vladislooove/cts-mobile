@@ -5,6 +5,10 @@ import { useNavigationState } from '@react-navigation/native';
 
 // Constants
 import { DASHBOARD_SCREEN, SYSTEM_SCREEN, SEARCH_SCREEN, MORE_SCREEN } from '../../configs/routing/constants';
+import { COLOR_PRIMARY, COLOR_SECONDARY } from '../../styles/constants';
+
+// Components
+import { Home, System, Search, More, Back } from '../icons';
 
 // Services
 import navigationService from '../../services/navigation';
@@ -25,44 +29,67 @@ export const Navigation: FC = () => {
     ...styles.menuActiveLink,
   } : styles.menuLink;
 
+  const getSvgIconProps = (isActive: boolean) => ({
+    width: 15,
+    height: 15,
+    fill: 'none',
+    stroke: isActive ? COLOR_SECONDARY : COLOR_PRIMARY,
+    strokeWidth: 3,
+  });
+
   return (
     <View style={styles.wrapper}>
       <View>
         {activeScreen !== DASHBOARD_SCREEN && (
-          <Text>
-            Back
-          </Text>
+          <Back
+            width={25}
+            height={25}
+            fill={COLOR_PRIMARY}
+            onPress={() => navigationService.goBack()}
+          />
         )}
       </View>
       <View style={styles.linksWrapper}>
-        <TouchableNativeFeedback onPress={() => onLinkClick(DASHBOARD_SCREEN)}>
-          <View style={getLinkStyle(activeScreen === DASHBOARD_SCREEN)}>
-            <Text>
-              Home
-            </Text>
-          </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback onPress={() => onLinkClick(SYSTEM_SCREEN)}>
-          <View style={getLinkStyle(activeScreen === SYSTEM_SCREEN)}>
-            <Text>
-              system
-            </Text>
-          </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback onPress={() => onLinkClick(SEARCH_SCREEN)}>
-          <View style={getLinkStyle(activeScreen === SEARCH_SCREEN)}>
-            <Text>
-              search
-            </Text>
-          </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback onPress={() => onLinkClick(MORE_SCREEN)}>
-          <View style={getLinkStyle(activeScreen === MORE_SCREEN)}>
-            <Text>
-              more
-            </Text>
-          </View>
-        </TouchableNativeFeedback>
+        <View style={getLinkStyle(activeScreen === DASHBOARD_SCREEN)}>
+          <TouchableNativeFeedback
+            onPress={() => onLinkClick(DASHBOARD_SCREEN)}
+            background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
+          >
+            <View style={styles.menuLinkInner}>
+              <Home {...getSvgIconProps(activeScreen === DASHBOARD_SCREEN)} />
+            </View>
+          </TouchableNativeFeedback>
+        </View>
+        <View style={getLinkStyle(activeScreen === SYSTEM_SCREEN)}>
+          <TouchableNativeFeedback
+            onPress={() => onLinkClick(SYSTEM_SCREEN)}
+            background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
+          >
+            <View style={styles.menuLinkInner}>
+              <System {...getSvgIconProps(activeScreen === SYSTEM_SCREEN)} />
+            </View>
+          </TouchableNativeFeedback>
+        </View>
+        <View style={getLinkStyle(activeScreen === SEARCH_SCREEN)}>
+          <TouchableNativeFeedback
+            onPress={() => onLinkClick(SEARCH_SCREEN)}
+            background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
+          >
+            <View style={styles.menuLinkInner}>
+              <Search {...getSvgIconProps(activeScreen === SEARCH_SCREEN)} />
+            </View>
+          </TouchableNativeFeedback>
+        </View>
+        <View style={getLinkStyle(activeScreen === MORE_SCREEN)}>
+          <TouchableNativeFeedback
+            onPress={() => onLinkClick(MORE_SCREEN)}
+            background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
+          >
+            <View style={styles.menuLinkInner}>
+              <More {...getSvgIconProps(activeScreen === SEARCH_SCREEN)} />
+            </View>
+          </TouchableNativeFeedback>
+        </View>
       </View>
     </View>
   );

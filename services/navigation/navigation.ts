@@ -15,4 +15,8 @@ export default class Navigation implements INavigation {
   public reset(state: Partial<NavigationState>) {
     this.ref?.current?.reset(state as any);
   }
+
+  public goBack() {
+    this.ref?.current?.goBack();
+  }
 }
