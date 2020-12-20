@@ -19,6 +19,9 @@ export const More: FC = () => {
             More
           </Title>
         </View>
+        <View style={styles.linksWrapper}>
+          
+        </View>
       </View>
     </View>
   );
