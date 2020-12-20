@@ -36,5 +36,5 @@ export default StyleSheet.create({
     textAlign: 'right',
     color: COLOR_WHITE,
     paddingBottom: 10,
-  }
+  },
 });

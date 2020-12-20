@@ -1,6 +1,6 @@
 // Libs
 import React, { FC, useState } from 'react';
-import { View, TextInput, Button, ImageBackground, Text } from 'react-native';
+import { View, Button, ImageBackground, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 // Utils
@@ -9,6 +9,9 @@ import { useInjectSaga } from '../../hooks/reduxInjectors';
 // Constants
 import { SIGNUP_SCREEN, FORGOT_PASSWORD_SCREEN } from '../../configs/routing/constants';
 import { HOME_SAGA } from './constants';
+
+// Components
+import Input from '../../components/Input';
 
 // Saga
 import saga from './sagas';
@@ -26,6 +29,10 @@ export const Home: FC = () => {
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginErrors, setLoginErrors] = useState<{
+    email?: string;
+    password?: string;
+  }>({});
 
   useInjectSaga({ key: HOME_SAGA, saga });
 
@@ -33,6 +40,26 @@ export const Home: FC = () => {
 
   const handleLogin = () => {
     if (isLoginFormVisible) {
+      const loginErrors: { email?: string; password?: string } = {};
+      setLoginErrors({});
+
+      if (!email) {
+        loginErrors.email = 'Please enter your email address';
+      }
+
+      if (!password) {
+        loginErrors.password = 'Please enter your password';
+      }
+
+      if (email && !/^[A-Z0-9._%"’’'+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+        loginErrors.email = 'Enter a valid email address';
+      }
+
+      if (Object.keys(loginErrors).length) {
+        setLoginErrors(loginErrors);
+        return;
+      }
+
       return dispatch(login({
         email,
         password,
@@ -57,17 +84,23 @@ export const Home: FC = () => {
         <View>
           {isLoginFormVisible && (
             <>
-              <TextInput
-                autoCompleteType="email"
-                textContentType="emailAddress"
+              <Input
+                autoCapitalize="none"
+                autoCorrect={false}
+                returnKeyType="go"
+                keyboardType="email-address"
+                placeholder="Email"
                 value={email}
                 onChangeText={setEmail}
+                error={loginErrors.email}
               />
-              <TextInput
+              <Input
                 autoCompleteType="password"
                 textContentType="password"
+                placeholder="Password"
                 value={password}
                 onChangeText={setPassword}
+                error={loginErrors.password}
               />
             </>
           )}

@@ -9,3 +9,4 @@ export { default as User } from './User';
 export { default as Resources } from './Resources';
 export { default as Contact } from './Contact';
 export { default as ArrowRight } from './ArrowRight';
+export { default as Warning } from './Warning';
