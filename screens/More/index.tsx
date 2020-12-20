@@ -7,9 +7,21 @@ import Navigation from '../../components/Navigation';
 import Title from '../../components/Title';
 import { About, ArrowRight, Governance, Contact, Resources, User } from '../../components/icons';
 
+// Constants
+import {
+  ABOUT_SCREEN,
+  GOVERNANCE_SCREEN,
+  CONTACT_SCREEN,
+  RESOURCES_SCREEN,
+  ACCOUNT_SCREEN,
+} from '../../configs/routing/constants';
+
 // Styles
 import styles from './styles';
 import { COLOR_PRIMARY } from '../../styles/constants';
+
+// Services
+import navigationService from '../../services/navigation';
 
 export const More: FC = () => {
   const svgIconProps = {
@@ -27,7 +39,7 @@ export const More: FC = () => {
           </Title>
         </View>
         <View style={styles.linksWrapper}>
-          <TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => navigationService.navigate(ABOUT_SCREEN)}>
             <View style={styles.link}>
               <View style={styles.linkInner}>
                 <About {...svgIconProps} />
@@ -38,7 +50,7 @@ export const More: FC = () => {
               </View>
             </View>
           </TouchableNativeFeedback>
-          <TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => navigationService.navigate(GOVERNANCE_SCREEN)}>
             <View style={styles.link}>
               <View style={styles.linkInner}>
                 <Governance {...svgIconProps} />
@@ -49,7 +61,7 @@ export const More: FC = () => {
               </View>
             </View>
           </TouchableNativeFeedback>
-          <TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => navigationService.navigate(CONTACT_SCREEN)}>
             <View style={styles.link}>
               <View style={styles.linkInner}>
                 <Contact {...svgIconProps} />
@@ -60,7 +72,7 @@ export const More: FC = () => {
               </View>
             </View>
           </TouchableNativeFeedback>
-          <TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => navigationService.navigate(RESOURCES_SCREEN)}>
             <View style={styles.link}>
               <View style={styles.linkInner}>
                 <Resources {...svgIconProps} />
@@ -71,7 +83,7 @@ export const More: FC = () => {
               </View>
             </View>
           </TouchableNativeFeedback>
-          <TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => navigationService.navigate(ACCOUNT_SCREEN)}>
             <View style={styles.link}>
               <View style={styles.linkInner}>
                 <User {...svgIconProps} />

@@ -1,10 +1,20 @@
 // Libs
 import React, { FC } from 'react';
-import { View, Text, TouchableNativeFeedback } from 'react-native';
+import { View, TouchableNativeFeedback } from 'react-native';
 import { useNavigationState } from '@react-navigation/native';
 
 // Constants
-import { DASHBOARD_SCREEN, SYSTEM_SCREEN, SEARCH_SCREEN, MORE_SCREEN } from '../../configs/routing/constants';
+import {
+  DASHBOARD_SCREEN,
+  SYSTEM_SCREEN,
+  SEARCH_SCREEN,
+  MORE_SCREEN,
+  ABOUT_SCREEN,
+  GOVERNANCE_SCREEN,
+  CONTACT_SCREEN,
+  RESOURCES_SCREEN,
+  ACCOUNT_SCREEN,
+} from '../../configs/routing/constants';
 import { COLOR_PRIMARY, COLOR_SECONDARY } from '../../styles/constants';
 
 // Components
@@ -80,13 +90,27 @@ export const Navigation: FC = () => {
             </View>
           </TouchableNativeFeedback>
         </View>
-        <View style={getLinkStyle(activeScreen === MORE_SCREEN)}>
+        <View style={getLinkStyle([
+          MORE_SCREEN,
+          ABOUT_SCREEN,
+          GOVERNANCE_SCREEN,
+          CONTACT_SCREEN,
+          RESOURCES_SCREEN,
+          ACCOUNT_SCREEN,
+        ].includes(activeScreen))}>
           <TouchableNativeFeedback
             onPress={() => onLinkClick(MORE_SCREEN)}
             background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
           >
             <View style={styles.menuLinkInner}>
-              <More {...getSvgIconProps(activeScreen === SEARCH_SCREEN)} />
+              <More {...getSvgIconProps([
+                MORE_SCREEN,
+                ABOUT_SCREEN,
+                GOVERNANCE_SCREEN,
+                CONTACT_SCREEN,
+                RESOURCES_SCREEN,
+                ACCOUNT_SCREEN,
+              ].includes(activeScreen))} />
             </View>
           </TouchableNativeFeedback>
         </View>

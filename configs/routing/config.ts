@@ -1,5 +1,18 @@
 // Constants
-import { SIGNUP_SCREEN, HOME_SCREEN, DASHBOARD_SCREEN, FORGOT_PASSWORD_SCREEN, SYSTEM_SCREEN, SEARCH_SCREEN, MORE_SCREEN } from './constants';
+import {
+  SIGNUP_SCREEN,
+  HOME_SCREEN,
+  DASHBOARD_SCREEN,
+  FORGOT_PASSWORD_SCREEN,
+  SYSTEM_SCREEN,
+  SEARCH_SCREEN,
+  MORE_SCREEN,
+  ABOUT_SCREEN,
+  GOVERNANCE_SCREEN,
+  CONTACT_SCREEN,
+  RESOURCES_SCREEN,
+  ACCOUNT_SCREEN,
+} from './constants';
 
 // Screens
 import Home from '../../screens/Home';
@@ -9,6 +22,11 @@ import ForgotPassword from '../../screens/ForgotPassword';
 import System from '../../screens/System';
 import Search from '../../screens/Search';
 import More from '../../screens/More';
+import About from '../../screens/About';
+import Governance from '../../screens/Governance';
+import Contact from '../../screens/Contact';
+import Resources from '../../screens/Resources';
+import Account from '../../screens/Account';
 
 export default {
   [HOME_SCREEN]: {
@@ -31,5 +49,20 @@ export default {
   },
   [MORE_SCREEN]: {
     component: More,
-  }
+  },
+  [ABOUT_SCREEN]: {
+    component: About,
+  },
+  [GOVERNANCE_SCREEN]: {
+    component: Governance,
+  },
+  [CONTACT_SCREEN]: {
+    component: Contact,
+  },
+  [RESOURCES_SCREEN]: {
+    component: Resources,
+  },
+  [ACCOUNT_SCREEN]: {
+    component: Account,
+  },
 };
