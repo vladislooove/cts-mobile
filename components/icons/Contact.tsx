@@ -13,6 +13,10 @@ export const Resources: FC<SvgProps> = (props) => (
       width={28.04}
       height={37.63}
       rx={1}
+      stroke="#009fe3"
+      fill="none"
+      strokeMiterlimit={10}
+      strokeWidth={1.2}
     />
     <Path
       d="M44.73 55.89h-7.59a1.29 1.29 0 01-1.29-1.29V32.35a1.29 1.29 0 011.29-1.29h7.59v7.83h-4.79v9.08h4.83z"
@@ -23,6 +27,10 @@ export const Resources: FC<SvgProps> = (props) => (
     />
     <Path
       d="M22.45 33.58h7.71M22.38 43.47h7.72M22.38 53.37h7.72"
+      stroke="#009fe3"
+      fill="none"
+      strokeMiterlimit={10}
+      strokeWidth={1.2}
     />
   </Svg>
 );

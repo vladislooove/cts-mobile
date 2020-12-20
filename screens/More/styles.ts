@@ -2,7 +2,7 @@
 import { StyleSheet } from 'react-native';
 
 // Styles
-import { COLOR_WHITE } from '../../styles/constants';
+import { COLOR_GRAY, COLOR_WHITE } from '../../styles/constants';
 
 export default StyleSheet.create({
   container: {
@@ -14,5 +14,25 @@ export default StyleSheet.create({
   },
   titleWrapper: {
     marginBottom: 25,
+  },
+  linksWrapper: {
+    marginHorizontal: -20
+  },
+  link: {
+    paddingHorizontal: 30,
+  },
+  linkInner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomColor: COLOR_GRAY,
+    borderBottomWidth: 1,
+    paddingRight: 10,
+  },
+  arrow: {
+    marginLeft: 'auto',
+  },
+  linkText: {
+    color: COLOR_GRAY,
+    fontSize: 16,
   },
 });

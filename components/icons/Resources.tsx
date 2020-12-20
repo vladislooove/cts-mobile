@@ -16,9 +16,17 @@ export const Resources: FC<SvgProps> = (props) => (
     />
     <Path
       d="M56.31 63.69H32.59V28.43h17.04l6.68 8v27.26z"
+      stroke="#009fe3"
+      fill="none"
+      strokeMiterlimit={10}
+      strokeWidth={1.2}
     />
     <Path
       d="M49.19 29.1v7.16h6.82M36.83 41.4h15.24M36.83 35.55h7.62M36.83 46.55h15.24M36.83 51.7h15.24M36.83 56.85h15.24"
+      stroke="#009fe3"
+      fill="none"
+      strokeMiterlimit={10}
+      strokeWidth={1.2}
     />
   </Svg>
 );
