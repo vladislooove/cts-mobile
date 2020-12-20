@@ -1,11 +1,15 @@
 // Libs
 import React, { FC } from 'react';
-import { View, TouchableNativeFeedback, Text } from 'react-native';
+import { View, TouchableNativeFeedback, Text, Button } from 'react-native';
+import { useDispatch } from 'react-redux';
 
 // Components
 import Navigation from '../../components/Navigation';
 import Title from '../../components/Title';
 import { About, ArrowRight, Governance, Contact, Resources, User } from '../../components/icons';
+
+// Utils
+import { useInjectSaga } from '../../hooks/reduxInjectors'
 
 // Constants
 import {
@@ -15,6 +19,7 @@ import {
   RESOURCES_SCREEN,
   ACCOUNT_SCREEN,
 } from '../../configs/routing/constants';
+import { MORE_SAGA } from './constants';
 
 // Styles
 import styles from './styles';
@@ -23,7 +28,18 @@ import { COLOR_PRIMARY } from '../../styles/constants';
 // Services
 import navigationService from '../../services/navigation';
 
+// Sagas
+import saga from './sagas';
+
+// Actions
+import { logout } from './actions';
+
 export const More: FC = () => {
+  const dispatch = useDispatch();
+  useInjectSaga({ key: MORE_SAGA, saga });
+
+  const handleLogout = () => dispatch(logout());
+
   const svgIconProps = {
     width: 75,
     height: 75,
@@ -94,6 +110,12 @@ export const More: FC = () => {
               </View>
             </View>
           </TouchableNativeFeedback>
+        </View>
+        <View style={styles.footer}>
+          <Button
+            title={'Logout'}
+            onPress={handleLogout}
+          />
         </View>
       </View>
     </View>

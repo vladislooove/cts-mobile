@@ -11,6 +11,7 @@ export default StyleSheet.create({
   },
   wrapper: { 
     padding: 20,
+    flex: 1,
   },
   titleWrapper: {
     marginBottom: 25,
@@ -34,5 +35,10 @@ export default StyleSheet.create({
   linkText: {
     color: COLOR_GRAY,
     fontSize: 16,
+  },
+  footer: {
+    marginTop: 'auto',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });
