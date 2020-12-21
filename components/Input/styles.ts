@@ -30,6 +30,8 @@ export default StyleSheet.create({
     position: 'absolute',
     right: 5,
     top: '50%',
-    marginTop: -15
+    marginTop: -15,
+    backgroundColor: COLOR_WHITE,
+    zIndex: 10,
   }
 });

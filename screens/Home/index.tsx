@@ -1,6 +1,6 @@
 // Libs
 import React, { FC, useState } from 'react';
-import { View, Button, ImageBackground, Text } from 'react-native';
+import { View, ImageBackground, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 // Utils
@@ -11,7 +11,9 @@ import { SIGNUP_SCREEN, FORGOT_PASSWORD_SCREEN } from '../../configs/routing/con
 import { HOME_SAGA } from './constants';
 
 // Components
+import Button from '../../components/Button';
 import Input from '../../components/Input';
+import PasswordInput from '../../components/PasswordInput';
 
 // Saga
 import saga from './sagas';
@@ -94,9 +96,9 @@ export const Home: FC = () => {
                 onChangeText={setEmail}
                 error={loginErrors.email}
               />
-              <Input
-                autoCompleteType="password"
-                textContentType="password"
+              <PasswordInput
+                autoCapitalize="none"
+                autoCorrect={false}
                 placeholder="Password"
                 value={password}
                 onChangeText={setPassword}
@@ -115,6 +117,7 @@ export const Home: FC = () => {
               <Button
                 title="Log In"
                 onPress={handleLogin}
+                primary={isLoginFormVisible}
               />
             </View>
           </View>
