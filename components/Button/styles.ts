@@ -7,14 +7,17 @@ import { COLOR_WHITE, COLOR_SECONDARY } from '../../styles/constants';
 export default StyleSheet.create({
   wrapper: {
     backgroundColor: COLOR_WHITE,
-    borderRadius: 5,
-    elevation: 2
+    borderRadius: 7,
+    elevation: 2,
+    overflow: 'hidden',
   },
   wrapperPrimary: {
     backgroundColor: COLOR_SECONDARY,
   },
   innerContent: {
-    padding: 16
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   text: {
     textAlign: 'center',

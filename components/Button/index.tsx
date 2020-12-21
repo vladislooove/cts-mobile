@@ -30,8 +30,8 @@ export const Button: FC<ButtonProps> = ({
         onPress={onPress}
       >
         <View style={styles.innerContent}>
-          {title && <Text style={textStyles}>{title}</Text>}
           {children}
+          {title && <Text style={textStyles}>{title}</Text>}
         </View>
       </TouchableNativeFeedback>
     </View>

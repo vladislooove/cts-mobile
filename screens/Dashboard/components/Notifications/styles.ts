@@ -36,7 +36,7 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
   },
   notifications: {
-    height: 280
+    height: 260
   },
   notification: {
     paddingTop: 10,
