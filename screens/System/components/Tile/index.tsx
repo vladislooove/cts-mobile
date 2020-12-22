@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 // Components
 import { View, TouchableNativeFeedback, Text } from 'react-native';
-import { Chest, UpperGi, Breast, Gynae, Urology, Head, Neuro, Skin } from '../icons';
+import { Chest, UpperGi, Breast, Gynae, Urology, Head, Neuro, Skin, Bones, Child, Haem, Specific } from '../icons';
 
 // Types
 import { TileProps } from './types';
@@ -35,12 +35,21 @@ export const Tile: FC<TileProps> = ({
     Icon = Head;
   } else if (system === 'NEURO_AND_EYE') {
     Icon = Neuro;
+  } else if (system === 'HAEMATOLOGICAL') {
+    Icon = Haem;
+  } else if (system === 'BONES_AND_SOFT_TISSUES') {
+    Icon = Bones;
+  } else if (system === 'CHILDHOOD_ONLY') {
+    Icon = Child;
+  } else if (system === 'NON_SPECIFIC') {
+    Icon = Specific;
   }
 
   const iconProps = {
     width: 50,
     height: 50,
     active,
+    style: styles.icon,
   };
 
   return (

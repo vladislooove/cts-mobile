@@ -6,3 +6,7 @@ export { default as Head } from './Head';
 export { default as Neuro } from './Neuro';
 export { default as Skin } from './Skin';
 export { default as Urology } from './Urology';
+export { default as Bones } from './Bones';
+export { default as Child } from './Child';
+export { default as Specific } from './Specific';
+export { default as Haem } from './Haem';
