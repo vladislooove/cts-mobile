@@ -7,6 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Navigation from '../../components/Navigation';
 import Title from '../../components/Title';
 import Tile from './components/Tile';
+import Button from '../../components/Button';
 
 // Constants
 import { SYSTEM_CATEGORIES } from './constants';
@@ -43,12 +44,16 @@ export const System: FC = () => {
                 active={selectedCategories.includes(item.category)}
                 onSelect={() => onCategoryPress(item.category)}
                 key={item.category}
-                icon={item.icon}
               />
             </View>
           ))}
         </View>
       </ScrollView>
+      {selectedCategories.length > 0 && (
+        <View style={styles.footer}>
+          <Button title="Next" primary />
+        </View>
+      )}
     </View>
   );
 }

@@ -31,5 +31,14 @@ export default StyleSheet.create({
   category: {
     padding: 5,
     width: '33.3333333%',
-  }
+  },
+  footer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: 15,
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
 });
