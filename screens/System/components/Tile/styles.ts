@@ -10,6 +10,7 @@ export default StyleSheet.create({
     backgroundColor: COLOR_WHITE,
     borderRadius: 10,
     overflow: 'hidden',
+    width: '100%',
   },
   innerActive: {
     backgroundColor: COLOR_SECONDARY,

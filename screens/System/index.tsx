@@ -11,6 +11,10 @@ import Button from '../../components/Button';
 
 // Constants
 import { SYSTEM_CATEGORIES } from './constants';
+import { RESULTS_SCREEN } from '../../configs/routing/constants';
+
+// Services
+import navigationService from '../../services/navigation';
 
 // Styles
 import styles from './styles';
@@ -24,6 +28,12 @@ export const System: FC = () => {
       : [...selectedCategories, id];
 
     setSelectedCategories(nextCategories);
+  };
+
+  const onNextPress = () => {
+    navigationService.navigate(RESULTS_SCREEN, {
+      categories: selectedCategories,
+    });
   };
 
   return (
@@ -51,7 +61,7 @@ export const System: FC = () => {
       </ScrollView>
       {selectedCategories.length > 0 && (
         <View style={styles.footer}>
-          <Button title="Next" primary />
+          <Button title="Next" primary onPress={onNextPress} />
         </View>
       )}
     </View>

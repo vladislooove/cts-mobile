@@ -14,6 +14,7 @@ import {
   CONTACT_SCREEN,
   RESOURCES_SCREEN,
   ACCOUNT_SCREEN,
+  RESULTS_SCREEN,
 } from '../../configs/routing/constants';
 import { COLOR_PRIMARY, COLOR_SECONDARY } from '../../styles/constants';
 
@@ -70,7 +71,7 @@ export const Navigation: FC = () => {
             </View>
           </TouchableNativeFeedback>
         </View>
-        <View style={getLinkStyle(activeScreen === SYSTEM_SCREEN)}>
+        <View style={getLinkStyle([SYSTEM_SCREEN, RESULTS_SCREEN].includes(activeScreen))}>
           <TouchableNativeFeedback
             onPress={() => onLinkClick(SYSTEM_SCREEN)}
             background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
