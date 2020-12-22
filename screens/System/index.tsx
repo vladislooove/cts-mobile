@@ -33,18 +33,21 @@ export const System: FC = () => {
           System
         </Title>
       </ImageBackground>
-      <ScrollView style={styles.categories}>
-        {SYSTEM_CATEGORIES.map((item) => (
-          <View style={styles.category} key={item.category}>
-            <Tile
-              name={item.name}
-              system={item.category}
-              active={selectedCategories.includes(item.category)}
-              onSelect={() => onCategoryPress(item.category)}
-              key={item.category}
-            />
-          </View>
-        ))}
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        <View style={styles.categories}>
+          {SYSTEM_CATEGORIES.map((item) => (
+            <View style={styles.category} key={item.category}>
+              <Tile
+                name={item.name}
+                system={item.category}
+                active={selectedCategories.includes(item.category)}
+                onSelect={() => onCategoryPress(item.category)}
+                key={item.category}
+                icon={item.icon}
+              />
+            </View>
+          ))}
+        </View>
       </ScrollView>
     </View>
   );

@@ -16,18 +16,20 @@ export default StyleSheet.create({
     paddingBottom: 120,
     color: COLOR_WHITE,
   },
-  categories: {
+  scrollView: {
+    flex: 1,
     marginTop: -160,
     padding: 20,
-    marginHorizontal: -10,
+  },
+  categories: {
+    marginHorizontal: -5,
+    paddingTop: 80,
+    paddingBottom: 100,
     flexDirection: 'row',
-    backgroundColor: 'red',
+    flexWrap: 'wrap',
   },
   category: {
-    // padding: 10,
-    // flexGrow: 1,
-    // width: '33.333333%',
-    backgroundColor: 'green',
-    margin: 10,
+    padding: 5,
+    width: '33.3333333%',
   }
 });

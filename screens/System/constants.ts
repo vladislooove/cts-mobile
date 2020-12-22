@@ -2,7 +2,7 @@ export const SYSTEM_CATEGORIES = [
   {
     name: 'Chest',
     category: 'CHEST',
-    systemType: 'Chest'
+    systemType: 'Chest',
   },
   {
     name: 'Upper & lower GI',
@@ -57,7 +57,4 @@ export const SYSTEM_CATEGORIES = [
   {
     name: 'Non-site-specific',
     category: 'NON_SPECIFIC'
-},  {
-    name: 'Combined',
-    category: 'COMBINED'
 }];
