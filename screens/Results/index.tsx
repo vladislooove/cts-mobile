@@ -49,9 +49,8 @@ export const Results: FC = () => {
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollView}>
         <View style={styles.categories}>
           {matchedCategories.map((item) => (
-            <View style={styles.category}>
+            <View style={styles.category} key={item.category}>
               <Tile
-                key={item.category}
                 name={item.name}
                 system={item.category}
                 onSelect={() => onRemoveCategory(item.category)}

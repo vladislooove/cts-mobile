@@ -1,15 +1,17 @@
 // Libs
 import React, { FC } from 'react';
-import { View } from 'react-native';
 
 // Components
 import Navigation from '../../components/Navigation';
 
+// Containers
+import SystemContainer from '../../containers/System';
+
 export const Search: FC = () => {
   return (
-    <View>
+    <SystemContainer>
       <Navigation />
-    </View>
+    </SystemContainer>
   );
 }
 
