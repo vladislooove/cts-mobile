@@ -57,4 +57,8 @@ export const SYSTEM_CATEGORIES = [
   {
     name: 'Non-site-specific',
     category: 'NON_SPECIFIC'
-}];
+  },{
+    name: 'Combined',
+    category: 'COMBINED'
+  },
+];

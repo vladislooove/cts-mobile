@@ -10,6 +10,6 @@ export const getFactors = (): GetFactorsActionType => ({
 });
 
 export const setFactors = (factors: Factor[]): SetFactorsActionType => ({
-  type: typeof SET_FACTORS,
+  type: SET_FACTORS,
   payload: factors,
 });

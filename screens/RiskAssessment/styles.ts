@@ -18,11 +18,17 @@ export default StyleSheet.create({
     fontSize: 20,
   },
   scrollView: {
-    flex: 1,
     marginTop: -80,
+    flexGrow: 0,
+  },
+  formScrollView: {
+    flex: 1,
+    flexGrow: 1,
+    flexShrink: 0,
   },
   categories: {
     flexDirection: 'row',
+    flexGrow: 0,
     padding: 20,
   },
   category: {

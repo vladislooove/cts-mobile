@@ -1,5 +1,6 @@
 // Libs
 import React, { FC, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigationState } from '@react-navigation/native';
 import { ImageBackground, View, Text } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -9,16 +10,25 @@ import Navigation from '../../components/Navigation';
 import Tile from '../System/components/Tile';
 import Button from '../../components/Button';
 
+// Utils
+import { mergeFactorsBySystems } from '../../containers/System/utils';
+
 // Constants
 import { SYSTEM_CATEGORIES } from '../System/constants';
+import { TYPE_NAMES } from './constants';
+
+// Selectors
+import { factorsByCategories$ } from '../../containers/System/selectors'; 
 
 // Styles
 import styles from './styles';
 
-export const Results: FC = () => {
+export const RiskAssessment: FC = () => {
+  const allFactors = useSelector(factorsByCategories$);
   const routes = useNavigationState((state) => state.routes);
   const categories = (routes[routes.length - 1]?.params as any)?.categories ?? [];
   const [selectedCategories, setSelectedCategories] = useState(categories);
+  const factors = mergeFactorsBySystems(allFactors, selectedCategories);
   const title = selectedCategories.length > 1
     ? 'Combined'
     : SYSTEM_CATEGORIES.find(({ category }) => category === selectedCategories[0])?.name ?? '';
@@ -37,7 +47,6 @@ export const Results: FC = () => {
     }
   };
 
-  console.log(matchedCategories);
   return (
     <View style={styles.wrapper}>
       <Navigation />
@@ -60,8 +69,17 @@ export const Results: FC = () => {
           ))}
         </View>
       </ScrollView>
+      <ScrollView showsHorizontalScrollIndicator={false} style={styles.formScrollView}>
+        {Object.entries(factors).map(([type, factors]) => (
+          <View>
+            <Text>
+              {(TYPE_NAMES  as any)[type]}
+            </Text>
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 };
 
-export default Results;
+export default RiskAssessment;

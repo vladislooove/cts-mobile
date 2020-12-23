@@ -18,3 +18,16 @@ export interface SetFactorsActionType {
 export interface SystemState {
   [FACTORS]: Factor[];
 }
+
+export interface FactorsByType {
+  INVESTIGATION?: Factor[];
+  RISK_FACTOR?: Factor[];
+  SIGN?: Factor[];
+  DIAGNOSTIC_PROBABILITY?: Factor[];
+  LESION_FEATURE?: Factor[];
+  SYMPTOM?: Factor[];
+}
+
+export interface FactorsBySystem {
+  [system: string]: FactorsByType;
+}

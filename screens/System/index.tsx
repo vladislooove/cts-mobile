@@ -14,7 +14,7 @@ import SystemContainer from '../../containers/System';
 
 // Constants
 import { SYSTEM_CATEGORIES } from './constants';
-import { RESULTS_SCREEN } from '../../configs/routing/constants';
+import { RISK_ASSESSMENT_SCREEN } from '../../configs/routing/constants';
 
 // Services
 import navigationService from '../../services/navigation';
@@ -34,7 +34,7 @@ export const System: FC = () => {
   };
 
   const onNextPress = () => {
-    navigationService.navigate(RESULTS_SCREEN, {
+    navigationService.navigate(RISK_ASSESSMENT_SCREEN, {
       categories: selectedCategories,
     });
   };
@@ -50,7 +50,7 @@ export const System: FC = () => {
         </ImageBackground>
         <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
           <View style={styles.categories}>
-            {SYSTEM_CATEGORIES.map((item) => (
+            {SYSTEM_CATEGORIES.map((item, index) =>  index + 1 !== SYSTEM_CATEGORIES.length && (
               <View style={styles.category} key={item.category}>
                 <Tile
                   name={item.name}

@@ -16,9 +16,11 @@ export default StyleSheet.create({
     backgroundColor: COLOR_SECONDARY,
   },
   inner: {
+    flexBasis: 110,
     height: 110,
     flex: 1,
     justifyContent: 'space-between',
+
   },
   iconWrapper: {
     position: 'relative',

@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { call, put } from 'redux-saga/effects';
 
 // Actions
-import { setAuth, setCcgs, setPractices, setLoading } from '../actions';
+import { setAuth, setCcgs, setPractices, setLoading, setUser } from '../actions';
 
 // Constants
 import { DASHBOARD_SCREEN } from '../../../configs/routing/constants';
@@ -14,6 +14,7 @@ import { DASHBOARD_SCREEN } from '../../../configs/routing/constants';
 import ccgService from '../../../services/ccgs';
 import practicesService from '../../../services/practices';
 import navigationService from '../../../services/navigation';
+import userService from '../../../services/user';
 
 export default function* initApp() {
   yield put(setLoading(true));
@@ -25,8 +26,13 @@ export default function* initApp() {
       index: 0,
       routes: [
         { name: DASHBOARD_SCREEN },
-      ],  
+      ],
     });
+    const { response: user } = yield call([
+      userService,
+      userService.getUser
+    ]);
+    yield put(setUser(user));
   }
 
   const { response: ccgs } = yield call([ccgService, ccgService.getAll]);

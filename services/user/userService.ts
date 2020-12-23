@@ -1,5 +1,6 @@
 // Libs
 import { Buffer } from 'buffer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Constants
 import { BASE_URL } from '../constants';
@@ -14,6 +15,30 @@ export default class UserService implements IUserService {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Basic ${Buffer.from(`${email}:${password}`).toString('base64')}`,
+      },
+    });
+    const status = response.status;
+    let result = null;
+    
+    try {
+      result = await response.json();
+    } catch {
+      result = null;
+    }
+
+    return {
+      status,
+      response: result,
+    };
+  }
+
+  public async getUser() {
+    const token = await AsyncStorage.getItem('accessToken');
+    const response = await fetch(`${BASE_URL}/api/user`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
     });
     const status = response.status;

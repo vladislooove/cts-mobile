@@ -1,10 +1,25 @@
 // Constants
-import { SET_AUTH, INIT_APP, SET_CCGS, SET_PRACTICES, SET_LOADING } from './constants';
+import {
+  SET_AUTH,
+  INIT_APP,
+  SET_CCGS,
+  SET_PRACTICES,
+  SET_LOADING,
+  SET_USER,
+} from './constants';
 
 // Types
-import { SetAuthActionType, InitAppActionType, SetCcgsActionType, SetPracticesActionType, SetLoadingActionType } from './types';
+import {
+  SetAuthActionType,
+  InitAppActionType,
+  SetCcgsActionType,
+  SetPracticesActionType,
+  SetLoadingActionType,
+  SetUserActionType,
+} from './types';
 import { Ccg } from '../../services/ccgs/types';
 import { Practice } from '../../services/practices/types';
+import { User } from '../../services/user/types';
 
 export const setAuth = (payload: boolean): SetAuthActionType => ({
   type: SET_AUTH,
@@ -28,4 +43,9 @@ export const setPractices = (payload: Practice[]): SetPracticesActionType => ({
 export const setLoading = (payload: boolean): SetLoadingActionType => ({
   type: SET_LOADING,
   payload,
+});
+
+export const setUser = (user: User): SetUserActionType => ({
+  type: SET_USER,
+  payload: user,
 });
