@@ -12,3 +12,4 @@ export { default as ArrowRight } from './ArrowRight';
 export { default as Warning } from './Warning';
 export { default as Eye } from './Eye';
 export { default as EyeThrough } from './EyeThrough';
+export { default as Checkmark } from './Checkmark';

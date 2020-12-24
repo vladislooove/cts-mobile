@@ -7,7 +7,7 @@ import { COLOR_WHITE } from '../../styles/constants';
 export default StyleSheet.create({
   loaderWrapper: {
     position: 'absolute',
-    zIndex: 100,
+    zIndex: 10000,
     top: 0,
     right: 0,
     bottom: 0,

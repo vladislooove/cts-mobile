@@ -17,6 +17,8 @@ export const Input: FC<InputProps> = ({
   onFocus,
   error,
   onChangeText,
+  onChange,
+  style,
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -46,7 +48,10 @@ export const Input: FC<InputProps> = ({
 
   const onChangeTextHandler = (value: string) => {
     setHasError(false);
-    onChangeText(value);
+
+    if (onChangeText) {
+      onChangeText(value);
+    }
   };
 
   const inputStyle = isFocused ? {
@@ -58,7 +63,7 @@ export const Input: FC<InputProps> = ({
     <View style={styles.wrapper}>
       <TextInput
         {...props}
-        style={inputStyle}
+        style={style ? { ...inputStyle, ...style } : inputStyle}
         onFocus={onFocusHandler}
         onBlur={onBlurHandler}
         onChangeText={onChangeTextHandler}

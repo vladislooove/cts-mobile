@@ -2,13 +2,16 @@
 import React, { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigationState } from '@react-navigation/native';
-import { ImageBackground, View, Text } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ImageBackground, View, Text, ScrollView } from 'react-native';
+import { useForm, Controller, ControllerRenderProps } from 'react-hook-form';
 
 // Components
 import Navigation from '../../components/Navigation';
 import Tile from '../System/components/Tile';
+import SectionTitle from '../../components/SectionTitle';
 import Button from '../../components/Button';
+import Input from '../../components/Input';
+import Checkbox from '../../components/Checkbox';
 
 // Utils
 import { mergeFactorsBySystems } from '../../containers/System/utils';
@@ -22,6 +25,10 @@ import { factorsByCategories$ } from '../../containers/System/selectors';
 
 // Styles
 import styles from './styles';
+import { COLOR_SECONDARY } from '../../styles/constants';
+
+// Types
+import { Factor } from '../../services/factors/types';
 
 export const RiskAssessment: FC = () => {
   const allFactors = useSelector(factorsByCategories$);
@@ -29,9 +36,7 @@ export const RiskAssessment: FC = () => {
   const categories = (routes[routes.length - 1]?.params as any)?.categories ?? [];
   const [selectedCategories, setSelectedCategories] = useState(categories);
   const factors = mergeFactorsBySystems(allFactors, selectedCategories);
-  const title = selectedCategories.length > 1
-    ? 'Combined'
-    : SYSTEM_CATEGORIES.find(({ category }) => category === selectedCategories[0])?.name ?? '';
+  const { control, handleSubmit } = useForm();
   
   const matchedCategories = selectedCategories.map((item: string) => {
     const relatedCategory = SYSTEM_CATEGORIES.find(({ category }) => category === item);
@@ -39,12 +44,42 @@ export const RiskAssessment: FC = () => {
     return relatedCategory;
   });
 
+  const title = selectedCategories.length > 1
+    ? 'Combined'
+    : SYSTEM_CATEGORIES.find(({ category }) => category === selectedCategories[0])?.name ?? '';
+
   const onRemoveCategory = (item: string) => {
     if (selectedCategories.length > 1) {
       setSelectedCategories(
         (categories: string[]) => categories.filter((id) => item !== id),
       );
     }
+  };
+
+  const renderControl = ({ onChange, name, value }: ControllerRenderProps, label: string) => {
+    if (name === 'age') {
+      return (
+        <View style={styles.ageField}>
+          <Text style={{ ...styles.label, paddingBottom: 30, paddingTop: 10 }}>
+            {label}
+          </Text>
+          <Input
+            onChangeText={onChange}
+            keyboardType="numeric"
+            value={value}
+            style={styles.ageInput}
+          />
+        </View>
+      );
+    }
+
+    return (
+      <Checkbox
+        label={label}
+        onChange={onChange}
+        value={value}
+      />
+    );
   };
 
   return (
@@ -71,10 +106,28 @@ export const RiskAssessment: FC = () => {
       </ScrollView>
       <ScrollView showsHorizontalScrollIndicator={false} style={styles.formScrollView}>
         {Object.entries(factors).map(([type, factors]) => (
-          <View>
-            <Text>
-              {(TYPE_NAMES  as any)[type]}
-            </Text>
+          <View key={type}>
+            <SectionTitle
+              title={(TYPE_NAMES  as any)[type]}
+              color={COLOR_SECONDARY}
+            />
+            {factors.map((item: Factor, index: number) => (
+              <View
+                key={item.id}
+                style={index === factors.length - 1
+                  ? { ...styles.factor, borderBottomColor: 'transparent' }
+                  : styles.factor
+                }
+              >
+                <Controller
+                  name={item.id}
+                  control={control}
+                  defaultValue={item.id === 'age' ? '' : false}
+                  rules={{ required: item.id === 'age' }}
+                  render={(props) => renderControl(props, item.name)}
+                />
+              </View>
+            ))}
           </View>
         ))}
       </ScrollView>
