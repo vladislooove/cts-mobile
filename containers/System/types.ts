@@ -1,5 +1,5 @@
 // Constants
-import { GET_FACTORS, SET_FACTORS, FACTORS } from './constants';
+import { GET_FACTORS, SET_FACTORS, FACTORS, SUBMIT_FACTORS } from './constants';
 
 // Types
 import { Factor } from '../../services/factors/types';
@@ -12,6 +12,13 @@ export interface GetFactorsActionType {
 export interface SetFactorsActionType {
   type: typeof SET_FACTORS;
   payload: Factor[];
+}
+
+export interface SubmitFactorsActionType {
+  type: typeof SUBMIT_FACTORS;
+  payload: {
+    [key: string]: boolean | string;
+  }
 }
 
 // Data interfaces

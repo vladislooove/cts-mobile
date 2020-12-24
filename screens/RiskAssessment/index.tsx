@@ -1,6 +1,6 @@
 // Libs
 import React, { FC, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigationState } from '@react-navigation/native';
 import { ImageBackground, View, Text, ScrollView } from 'react-native';
 import { useForm, Controller, ControllerRenderProps } from 'react-hook-form';
@@ -21,6 +21,9 @@ import { mergeFactorsBySystems } from '../../containers/System/utils';
 import { SYSTEM_CATEGORIES } from '../System/constants';
 import { TYPE_NAMES } from './constants';
 
+// Actions
+import { submitFactors }  from '../../containers/System/actions';
+
 // Selectors
 import { factorsByCategories$ } from '../../containers/System/selectors'; 
 
@@ -33,6 +36,7 @@ import { Factor } from '../../services/factors/types';
 
 export const RiskAssessment: FC = () => {
   const allFactors = useSelector(factorsByCategories$);
+  const dispatch = useDispatch();
   const routes = useNavigationState((state) => state.routes);
   const categories = (routes[routes.length - 1]?.params as any)?.categories ?? [];
   const [selectedCategories, setSelectedCategories] = useState(categories);
@@ -57,9 +61,9 @@ export const RiskAssessment: FC = () => {
     }
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
-  }
+  const onSubmit = (data: { [key: string]: string | boolean }) => {
+    dispatch(submitFactors(data));
+  };
 
   const renderControl = ({ onChange, name, value }: ControllerRenderProps, label: string) => {
     if (name === 'age') {

@@ -6,6 +6,7 @@ export const SYSTEM_PREFIX = 'SYSTEM';
 // Action types
 export const GET_FACTORS = `${SYSTEM_PREFIX}/GET_FACTORS`;
 export const SET_FACTORS = `${SYSTEM_PREFIX}/SET_FACTORS`;
+export const SUBMIT_FACTORS = `${SYSTEM_PREFIX}/SUBMIT_FACTORS`;
 
 // State
 export const FACTORS = 'FACTORS';
