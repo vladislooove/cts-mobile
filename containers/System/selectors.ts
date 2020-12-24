@@ -6,7 +6,7 @@ import { SYSTEM_REDUCER, FACTORS } from './constants';
 
 // Types
 import { SystemState } from './types';
-import { Factor } from '../../services/factors/types';
+import { Factor } from '../../services/system/types';
 
 // Selectors
 import { userCcg$ } from '../App/selectors';

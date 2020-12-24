@@ -9,7 +9,7 @@ import { setFactors } from '../actions';
 import { factors$ } from '../selectors';
 
 // Services
-import factorsService from '../../../services/factors';
+import systemService from '../../../services/system';
 
 export default function* getFactors() {
   const factors = yield select(factors$);
@@ -19,7 +19,7 @@ export default function* getFactors() {
   }
 
   yield put(setLoading(true));
-  const { response } = yield call([factorsService, factorsService.getAll]);
+  const { response } = yield call([systemService, systemService.getFactors]);
   yield put(setFactors(response));
   yield put(setLoading(false));
 }

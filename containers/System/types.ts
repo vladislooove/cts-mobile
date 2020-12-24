@@ -1,8 +1,8 @@
 // Constants
-import { GET_FACTORS, SET_FACTORS, FACTORS, SUBMIT_FACTORS } from './constants';
+import { GET_FACTORS, SET_FACTORS, FACTORS, SUBMIT_FACTORS, DIAGNOSIS, SET_DIAGNOSIS } from './constants';
 
 // Types
-import { Factor } from '../../services/factors/types';
+import { Factor, Diagnosis } from '../../services/system/types';
 
 // Action types
 export interface GetFactorsActionType {
@@ -21,9 +21,15 @@ export interface SubmitFactorsActionType {
   }
 }
 
+export interface SetDiagnosisActionType {
+  type: typeof SET_DIAGNOSIS;
+  payload: Diagnosis;
+}
+
 // Data interfaces
 export interface SystemState {
   [FACTORS]: Factor[];
+  [DIAGNOSIS]: null | Diagnosis;
 }
 
 export interface FactorsByType {

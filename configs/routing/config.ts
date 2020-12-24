@@ -13,6 +13,7 @@ import {
   RESOURCES_SCREEN,
   ACCOUNT_SCREEN,
   RISK_ASSESSMENT_SCREEN,
+  RESULTS_SCREEN,
 } from './constants';
 
 // Screens
@@ -29,6 +30,7 @@ import Contact from '../../screens/Contact';
 import Resources from '../../screens/Resources';
 import Account from '../../screens/Account';
 import RiskAssessment from '../../screens/RiskAssessment';
+import Results from '../../screens/Results';
 
 export default {
   [HOME_SCREEN]: {
@@ -69,5 +71,8 @@ export default {
   },
   [RISK_ASSESSMENT_SCREEN]: {
     component: RiskAssessment,
+  },
+  [RESULTS_SCREEN]: {
+    component: Results,
   },
 };

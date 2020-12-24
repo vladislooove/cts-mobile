@@ -32,7 +32,7 @@ import styles from './styles';
 import { COLOR_SECONDARY } from '../../styles/constants';
 
 // Types
-import { Factor } from '../../services/factors/types';
+import { Factor } from '../../services/system/types';
 
 export const RiskAssessment: FC = () => {
   const allFactors = useSelector(factorsByCategories$);

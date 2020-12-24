@@ -3,7 +3,7 @@ import { SYSTEM_CATEGORIES } from '../../screens/System/constants';
 
 // Types
 import { FactorsBySystem, FactorsByType } from './types';
-import { Factor } from '../../services/factors/types';
+import { Factor } from '../../services/system/types';
 
 export const getAlphabet = () => {
   const letters = [];
