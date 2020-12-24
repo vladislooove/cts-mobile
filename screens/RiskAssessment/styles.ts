@@ -56,5 +56,9 @@ export default StyleSheet.create({
   },
   label: {
     color: COLOR_GRAY,
+  },
+  footer: {
+    paddingTop: 20,
+    paddingVertical: 10,
   }
 });

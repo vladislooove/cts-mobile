@@ -18,6 +18,7 @@ export default StyleSheet.create({
     padding: 16,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   text: {
     textAlign: 'center',

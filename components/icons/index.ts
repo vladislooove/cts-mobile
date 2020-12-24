@@ -13,3 +13,5 @@ export { default as Warning } from './Warning';
 export { default as Eye } from './Eye';
 export { default as EyeThrough } from './EyeThrough';
 export { default as Checkmark } from './Checkmark';
+export { default as Female } from './Female';
+export { default as Male } from './Male';

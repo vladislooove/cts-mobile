@@ -10,6 +10,7 @@ import Navigation from '../../components/Navigation';
 import Tile from '../System/components/Tile';
 import SectionTitle from '../../components/SectionTitle';
 import Button from '../../components/Button';
+import GenderField from './components/GenderField';
 import Input from '../../components/Input';
 import Checkbox from '../../components/Checkbox';
 
@@ -56,6 +57,10 @@ export const RiskAssessment: FC = () => {
     }
   };
 
+  const onSubmit = (data) => {
+    console.log(data);
+  }
+
   const renderControl = ({ onChange, name, value }: ControllerRenderProps, label: string) => {
     if (name === 'age') {
       return (
@@ -70,6 +75,15 @@ export const RiskAssessment: FC = () => {
             style={styles.ageInput}
           />
         </View>
+      );
+    }
+
+    if (name === 'gender') {
+      return (
+        <GenderField
+          onChange={onChange}
+          value={value}
+        />
       );
     }
 
@@ -122,7 +136,11 @@ export const RiskAssessment: FC = () => {
                 <Controller
                   name={item.id}
                   control={control}
-                  defaultValue={item.id === 'age' ? '' : false}
+                  defaultValue={
+                    ['age', 'gender'].includes(item.id)
+                      ? ''
+                      : false
+                  }
                   rules={{ required: item.id === 'age' }}
                   render={(props) => renderControl(props, item.name)}
                 />
@@ -130,6 +148,13 @@ export const RiskAssessment: FC = () => {
             ))}
           </View>
         ))}
+        <View style={styles.footer}>
+          <Button
+            title="Risk assess"
+            primary
+            onPress={handleSubmit(onSubmit)}
+          />
+        </View>
       </ScrollView>
     </View>
   );
