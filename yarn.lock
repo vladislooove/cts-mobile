@@ -4832,6 +4832,18 @@ react-native-screens@2.10.1:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.10.1.tgz#06d22fae87ef0ce51c616c34a199726db1403b95"
   integrity sha512-Z2kKSk4AwWRQNCBmTjViuBQK0/Lx0jc25TZptn/2gKYUCOuVRvCekoA26u0Tsb3BIQ8tWDsZW14OwDlFUXW1aw==
 
+react-native-section-alphabet-list@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-section-alphabet-list/-/react-native-section-alphabet-list-2.0.1.tgz#0cd458722c1fa4f532b98d2bd7b49a5cab7939a9"
+  integrity sha512-GLEC9eYV+hiLNd/JpK8J8bQFICLK0WT8t3GlKz7+FfmuUchFVnNtVACTmf4wozVlg5Nc+sPTXDp1E9diw6ntjg==
+  dependencies:
+    react-native-section-list-get-item-layout "^2.2.3"
+
+react-native-section-list-get-item-layout@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/react-native-section-list-get-item-layout/-/react-native-section-list-get-item-layout-2.2.3.tgz#152a8efdcb3847dbcbeb04cd2d0de4312d3d2fcb"
+  integrity sha512-fzCW5SiYP6qCZyDHebaElHonIFr8NFrZK9JDkxFLnpxMJih4d+HQ4rHyOs0Z4Gb/FjyCVbRH7RtEnjeQ0XffMg==
+
 react-native-splash-screen@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"

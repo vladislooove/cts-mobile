@@ -19,7 +19,6 @@ import saga from './sagas';
 
 export const SystemContainer: FC = ({ children }) => {
   const dispatch = useDispatch();
-
   useInjectReducer({ key: SYSTEM_REDUCER, reducer });
   useInjectSaga({ key: SYSTEM_SAGA, saga });
 

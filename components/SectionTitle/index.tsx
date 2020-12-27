@@ -11,9 +11,14 @@ import { SectionTitleProps } from './types';
 export const SectionTitle: FC<SectionTitleProps> = ({
   title,
   color,
+  round,
 }) => (
   <View style={styles.wrapper}>
-    <Text style={{ ...styles.title, backgroundColor: color }}>
+    <Text style={{
+      ...styles.title,
+      ...(round ? styles.titleRound : {}),
+      backgroundColor: color,
+    }}>
       {title}
     </Text>
     <View style={{ ...styles.line, backgroundColor: color }} />

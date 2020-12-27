@@ -18,6 +18,11 @@ export default StyleSheet.create({
     position: 'relative',
     zIndex: 1,
   },
+  titleRound: {
+    paddingHorizontal: 0,
+    width: 35,
+    textAlign: 'center',
+  },
   line: {
     height: 1,
     position: 'absolute',

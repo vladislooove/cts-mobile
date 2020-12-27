@@ -5,16 +5,6 @@ import { SYSTEM_CATEGORIES } from '../../screens/System/constants';
 import { FactorsBySystem, FactorsByType } from './types';
 import { Factor } from '../../services/system/types';
 
-export const getAlphabet = () => {
-  const letters = [];
-
-  for (let i = 65; i < 91; i += 1) {
-    letters.push(String.fromCharCode(i));
-  }
-
-  return letters;
-};
-
 export const sortFactorsInCategory = (system: any) => {
   const res: any = {};
   const types = Object.keys(system);
@@ -77,23 +67,6 @@ export const filterFactorsBySystems = (factors: Factor[] = [], ccg = '') => {
     formattedSystems[system] = sortFactorsInCategory(currSystem);
   });
   return formattedSystems;
-};
-
-export const filterFactorsByAlphabet = (factors: Factor[] = []) => {
-  const alphabet = getAlphabet();
-  const factorsIdToSkip = ['age', 'gender'];
-  const filteredFactors = factors.filter((factor) => !factorsIdToSkip.includes(factor.id));
-
-  return alphabet.map((letter) => {
-    const letterFactors = filteredFactors
-      .filter((factor) => factor.name.startsWith(letter))
-      .sort((a, b) => a.name.localeCompare(b.name));
-
-    return {
-      letter,
-      factors: letterFactors,
-    };
-  });
 };
 
 export const getFactorsByCategories = (factors: Factor[] = [], categories = []) => {

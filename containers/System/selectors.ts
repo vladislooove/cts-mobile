@@ -12,7 +12,7 @@ import { Diagnosis, Factor } from '../../services/system/types';
 import { userCcg$ } from '../App/selectors';
 
 // Utils
-import { filterFactorsBySystems, filterFactorsByAlphabet } from './utils';
+import { filterFactorsBySystems } from './utils';
 
 export const systemState$ = (state: any): SystemState => state[SYSTEM_REDUCER];
 
