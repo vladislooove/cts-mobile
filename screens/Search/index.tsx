@@ -1,10 +1,12 @@
 // Libs
 import React, { FC, useState } from 'react';
 import { View, Text } from 'react-native';
+import { useDispatch } from 'react-redux';
 
 // Components
 import Navigation from '../../components/Navigation';
 import Title from '../../components/Title';
+import Button from '../../components/Button';
 import SearchInput from '../../components/SearchInput';
 import FactorsList from './components/FactorsList';
 
@@ -14,11 +16,15 @@ import SystemContainer from '../../containers/System';
 // Styles
 import styles from './styles';
 
+// Actions
+import { submitFactors }  from '../../containers/System/actions';
+
 // Types
 import { FactorListItem } from './components/FactorsList/types';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 export const Search: FC = () => {
+  const dispatch = useDispatch();
   const [searchText, setSearchText] = useState('');
   const [selectedFactors, setSelectedFactors] = useState<FactorListItem[]>([]);
 
@@ -30,6 +36,13 @@ export const Search: FC = () => {
 
   const onRemoveFactor = (item: FactorListItem) => {
     setSelectedFactors((factors) => factors.filter(({ id }) => id !== item.id));
+  };
+
+  const onSubmitForm = () => {
+    dispatch(submitFactors(selectedFactors.reduce((acc, item) => ({
+      ...acc,
+      [item.id]: true,
+    }), {})));
   };
 
   return (
@@ -71,6 +84,15 @@ export const Search: FC = () => {
             selectedFactors={selectedFactors}
             onSelectFactor={onSelectFactor}
           />
+          {selectedFactors.length > 0 && (
+            <View style={styles.buttonWrapper}>
+              <Button
+                title="Next"
+                primary
+                onPress={onSubmitForm}
+              />
+            </View>
+          )}
         </View>
       </View>
     </SystemContainer>

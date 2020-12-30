@@ -58,5 +58,16 @@ export default StyleSheet.create({
   listWrapper: {
     flex: 1,
     paddingLeft: 20,
+    position: 'relative',
   },
+  buttonWrapper: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  }
 });
