@@ -12,6 +12,7 @@ import { RESOURCE_CATEGORIES } from './constants';
 
 // Styles
 import styles from './styles';
+import { COLOR_WHITE } from '../../styles/constants';
 
 export const Resources: FC = () => {
   return (
@@ -38,7 +39,7 @@ export const Resources: FC = () => {
                 <TouchableNativeFeedback>
                   <View style={styles.iconInnerWrapper}>
                     <View style={styles.iconInner}>
-
+                      <item.icon width="40" height="40" fill={COLOR_WHITE} style={styles.svgIcon} />
                     </View>
                     <Text style={styles.iconText}>
                       {item.name}

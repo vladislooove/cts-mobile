@@ -1,3 +1,6 @@
+// Components
+import { CCG, Travel, Mental, Cancer, Child, Support, Info, Nutrition, Treatment } from './components/icons';
+
 export const RESOURCE_CATEGORIES = [
   {
     key: 0,
@@ -5,13 +8,15 @@ export const RESOURCE_CATEGORIES = [
     categories: [
       'CCG'
     ],
+    icon: CCG,
   },
   {
     key: 1,
     name: 'Benefits & travel',
     categories: [
       'BENEFITS'
-    ]
+    ],
+    icon: Travel,
   },
   {
     key: 2,
@@ -19,14 +24,16 @@ export const RESOURCE_CATEGORIES = [
     categories: [
       'MENTAL_HEALTH',
       'WELLBEING'
-    ]
+    ],
+    icon: Mental,
   },
   {
     key: 3,
     name: 'Cancer specific',
     categories: [
       'DISEASE_SPECIFIC'
-    ]
+    ],
+    icon: Cancer,
   },
   {
     key: 4,
@@ -34,7 +41,8 @@ export const RESOURCE_CATEGORIES = [
     categories: [
       'CHILD',
       'TEENAGER'
-    ]
+    ],
+    icon: Child,
   },
   {
     key: 5,
@@ -42,21 +50,24 @@ export const RESOURCE_CATEGORIES = [
     categories: [
       'CARE',
       'SUPPORT'
-    ]
+    ],
+    icon: Support,
   },
   {
     key: 6,
     name: 'Patient information',
     categories: [
       'PATIENT_INFORMATION_LEAFLET'
-    ]
+    ],
+    icon: Info,
   },
   {
     key: 7,
     name: 'Nutrition',
     categories: [
       'NUTRITION'
-    ]
+    ],
+    icon: Nutrition,
   },
   {
     key: 8,
@@ -64,6 +75,7 @@ export const RESOURCE_CATEGORIES = [
     categories: [
       'TREATMENT',
       'SIDE_EFFECT'
-    ]
+    ],
+    icon: Treatment,
   }
 ];

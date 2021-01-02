@@ -20,6 +20,7 @@ export default StyleSheet.create({
   },
   iconsWrapper:{ 
     flexDirection: 'row',
+    paddingTop: 10,
     marginHorizontal: -5,
     flexWrap: 'wrap',
   },
@@ -34,15 +35,24 @@ export default StyleSheet.create({
   },
   iconInnerWrapper: {
     flex: 1,
+    height: 100,
+    paddingVertical: 10,
   },
   iconInner: {
-    flex: 1,
+    position: 'relative',
+    flexGrow: 1,
+  },
+  svgIcon: {
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    marginTop: -20,
+    marginLeft: -20,  
   },
   iconText: {
     color: COLOR_WHITE,
     fontSize: 11,
     textAlign: 'center',
-    paddingVertical: 10,
     paddingHorizontal: 5,
   }
 });
