@@ -1,5 +1,5 @@
 // Libs
-import React, { FC, useMemo } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import { useNavigationState } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
@@ -21,11 +21,14 @@ export const ResourcesCategory: FC = () => {
   const routes = useNavigationState((state) => state.routes);
   const resources = useSelector(resources$);
   const userCCG = useSelector(userCcg$);
+  const [searchQuery, setSearchQuery] = useState('');
   const activeScreen = routes[routes.length - 1];
   const { name, categories } = activeScreen?.params ?? {};
 
+  const onInputChange = (text: string) => setSearchQuery(text);
+
   const resourcesByCategory = useMemo(() => {
-    return resources.filter((item) => {
+    const filteredResources = resources.filter((item) => {
       if (name === 'CCG' && userCCG) {
         return item.ccgs.includes(userCCG.id);
       }
@@ -34,7 +37,12 @@ export const ResourcesCategory: FC = () => {
         (category) => categories?.includes(category),
       ) && (item.ccgs.includes(userCCG?.id ?? '') || item.ccgs.includes('ALL'));
     });
-  }, [resources, categories, name]);
+
+    return filteredResources.filter(({ title, description }) => {
+      return title.toLowerCase().includes(searchQuery.toLowerCase())
+        || description.toLowerCase().includes(searchQuery.toLowerCase());
+    })
+  }, [resources, categories, name, searchQuery]);
 
   return (
     <View style={styles.wrapper}>
@@ -45,7 +53,7 @@ export const ResourcesCategory: FC = () => {
             {name}
           </Title>
         </View>
-        <SearchInput />
+        <SearchInput value={searchQuery} onChangeText={onInputChange} />
         <Resources resources={resourcesByCategory} />
       </ScrollView>
     </View>

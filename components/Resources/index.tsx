@@ -1,5 +1,5 @@
 // Libs
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { View, TouchableNativeFeedback, Text } from 'react-native';
 
 // Components
@@ -15,7 +15,11 @@ import { COLOR_SECONDARY } from '../../styles/constants';
 export const Resources: FC<ResourceProps> = ({
   resources,
 }) => {
-  return resources.map(({ id, title, description }) => (
+  const sortedResource = useMemo(() => {
+    return resources.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+  }, [resources]);
+
+  return sortedResource.map(({ id, title, description }) => (
     <TouchableNativeFeedback key={id}>
       <View style={styles.resource}>
         <View style={styles.resourceContent}>

@@ -15,7 +15,7 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 75,
   },
-  scrollView: {
+  content: {
     padding: 20,
   },
   iconsWrapper:{ 
