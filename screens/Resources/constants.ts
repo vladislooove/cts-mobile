@@ -1,6 +1,10 @@
 // Components
 import { CCG, Travel, Mental, Cancer, Child, Support, Info, Nutrition, Treatment } from './components/icons';
 
+// Module constants
+export const RESOURCES_REDUCER = 'RESOURCES';
+export const RESOURCES_PREFIX = 'RESOURCES';
+export const RESOURCES_SAGA = 'RESOURCES_SAGA';
 export const RESOURCE_CATEGORIES = [
   {
     key: 0,
@@ -79,3 +83,10 @@ export const RESOURCE_CATEGORIES = [
     icon: Treatment,
   }
 ];
+
+// Action types
+export const GET_RESOURCES = `${RESOURCES_PREFIX}/GET_RESOURCES`;
+export const SET_RESOURCES = `${RESOURCES_PREFIX}/SET_RESOURCES`;
+
+// State
+export const RESOURCES = 'RESOURCES';

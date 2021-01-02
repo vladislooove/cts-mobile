@@ -32,6 +32,30 @@ export default class SystemService implements ISystemService {
     };
   }
 
+  public async getResources() {
+    const token = await AsyncStorage.getItem('accessToken');
+    const response = await fetch(`${BASE_URL}/api/resources`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+    const status = response.status;
+    let result = null;
+    
+    try {
+      result = await response.json();
+    } catch {
+      result = null;
+    }
+
+    return {
+      status,
+      response: result,
+    };
+  }
+
   public async postFactors(data: { [key: string]: string | boolean }) {
     const token = await AsyncStorage.getItem('accessToken');
     const response = await fetch(`${BASE_URL}/api/system/diagnoses`, {

@@ -2,7 +2,8 @@
 import { Response } from '../types';
 
 export interface ISystemService {
-  getFacrors: () => Promise<Response<Factor[]>>;
+  getFactors: () => Promise<Response<Factor[]>>;
+  getResources: () => Promise<Response<Resource[]>>;
   postFactors: (data: { [key: string]: string | boolean }) => Promise<Response<Diagnosis>>;
 }
 
@@ -83,4 +84,23 @@ export interface SnomedCT {
   code: string;
   description: string;
   descriptionCode: string;
+}
+
+export interface Resource {
+  categories: string[];
+  ccgs: string[];
+  description: string;
+  diseaseType: string;
+  excludedCcgs: string[];
+  id: string;
+  orgLink: string | null;
+  organization: string;
+  pdfLinks: {
+    [key: string]: string;
+  };
+  results: any[];
+  shortLinkKey: string;
+  systemType: string;
+  tags: string[];
+  title: string;
 }
