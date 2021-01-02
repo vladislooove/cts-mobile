@@ -9,6 +9,7 @@ import Title from '../../components/Title';
 import SearchInput from '../../components/SearchInput';
 
 // Constants
+import { RESOURCES_CATEGORY_SCREEN } from '../../configs/routing/constants';
 import { RESOURCE_CATEGORIES, RESOURCES_REDUCER, RESOURCES_SAGA } from './constants';
 
 // Hooks
@@ -23,6 +24,9 @@ import saga from './sagas';
 // Reducer
 import reducer from './reducer';
 
+// Services
+import navigationService from '../../services/navigation';
+
 // Styles
 import styles from './styles';
 import { COLOR_WHITE } from '../../styles/constants';
@@ -35,6 +39,13 @@ export const Resources: FC = () => {
   useEffect(() => {
     dispatch(getResources());
   }, [dispatch]);
+
+  const onCategoryClick = (item: { name: string; categories: string[] }) => {
+    navigationService.navigate(RESOURCES_CATEGORY_SCREEN, {
+      name: item.name,
+      categories: item.categories,
+    });
+  };
 
   return (
     <View style={styles.wrapper}>
@@ -57,7 +68,7 @@ export const Resources: FC = () => {
               style={styles.iconColumn}
             >
               <View style={styles.icon}>
-                <TouchableNativeFeedback>
+                <TouchableNativeFeedback onPress={() => onCategoryClick(item)}>
                   <View style={styles.iconInnerWrapper}>
                     <View style={styles.iconInner}>
                       <item.icon width="40" height="40" fill={COLOR_WHITE} style={styles.svgIcon} />

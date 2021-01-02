@@ -14,6 +14,7 @@ import {
   ACCOUNT_SCREEN,
   RISK_ASSESSMENT_SCREEN,
   RESULTS_SCREEN,
+  RESOURCES_CATEGORY_SCREEN,
 } from './constants';
 
 // Screens
@@ -28,6 +29,7 @@ import About from '../../screens/About';
 import Governance from '../../screens/Governance';
 import Contact from '../../screens/Contact';
 import Resources from '../../screens/Resources';
+import ResourcesCategory from '../../screens/ResourcesCategory';
 import Account from '../../screens/Account';
 import RiskAssessment from '../../screens/RiskAssessment';
 import Results from '../../screens/Results';
@@ -74,5 +76,8 @@ export default {
   },
   [RESULTS_SCREEN]: {
     component: Results,
+  },
+  [RESOURCES_CATEGORY_SCREEN]: {
+    component: ResourcesCategory,
   },
 };
