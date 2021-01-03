@@ -37,7 +37,6 @@ import { COLOR_WHITE } from '../../styles/constants';
 
 export const Resources: FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const resources = useSelector(resources$);
   const dispatch = useDispatch();
   useInjectReducer({ key: RESOURCES_REDUCER, reducer });
   useInjectSaga({ key: RESOURCES_SAGA, saga });
@@ -46,6 +45,7 @@ export const Resources: FC = () => {
     dispatch(getResources());
   }, [dispatch]);
 
+  const resources = useSelector(resources$);
   const onCategoryClick = (item: { name: string; categories: string[] }) => {
     navigationService.navigate(RESOURCES_CATEGORY_SCREEN, {
       name: item.name,

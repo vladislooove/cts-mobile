@@ -15,6 +15,7 @@ import {
   RISK_ASSESSMENT_SCREEN,
   RESULTS_SCREEN,
   RESOURCES_CATEGORY_SCREEN,
+  RESOURCE_SCREEN,
 } from './constants';
 
 // Screens
@@ -33,6 +34,7 @@ import ResourcesCategory from '../../screens/ResourcesCategory';
 import Account from '../../screens/Account';
 import RiskAssessment from '../../screens/RiskAssessment';
 import Results from '../../screens/Results';
+import Resource from '../../screens/Resource';
 
 export default {
   [HOME_SCREEN]: {
@@ -80,4 +82,7 @@ export default {
   [RESOURCES_CATEGORY_SCREEN]: {
     component: ResourcesCategory,
   },
+  [RESOURCE_SCREEN]: {
+    component: Resource,
+  }
 };
