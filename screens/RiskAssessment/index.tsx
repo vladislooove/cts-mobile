@@ -62,7 +62,10 @@ export const RiskAssessment: FC = () => {
   };
 
   const onSubmit = (data: { [key: string]: string | boolean }) => {
-    dispatch(submitFactors(data));
+    dispatch(submitFactors({
+      factors: data,
+      categories: selectedCategories,
+    }));
   };
 
   const renderControl = ({ onChange, name, value }: ControllerRenderProps, label: string) => {

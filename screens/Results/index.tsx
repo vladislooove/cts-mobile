@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux';
 import Navigation from '../../components/Navigation';
 import SectionTitle from '../../components/SectionTitle';
 import Title from '../../components/Title';
-import CareNote from './components/CareNote';
+import CareNotes from './components/CareNotes';
+import Resources from '../../components/Resources';
 
 // Selectors
 import { diagnosis$ } from '../../containers/System/selectors';
@@ -26,39 +27,39 @@ export const Results: FC = () => {
   return (
     <View style={styles.wrapper}>
       <Navigation />
-      <View style={styles.titleWrapper}>
-        <Title>
-          Results
-        </Title>
-      </View>
       <ScrollView style={styles.scrollContainer}>
+        <View style={styles.titleWrapper}>
+          <Title>
+            Results
+          </Title>
+        </View>
         {diagnosis.recommendations.length > 0 && (
           <View>
             <SectionTitle
               title={'Recommendations'}
               color={COLOR_ERROR}
             />
-            {diagnosis.recommendations.map((item) => (
-              <CareNote key={item.id} />
-            ))}
+            <CareNotes items={diagnosis.recommendations} />
           </View>
         )}
 
-        {diagnosis.considerations.length > 1 && (
+        {diagnosis.considerations.length > 0 && (
           <View>
             <SectionTitle
               title={'Considerations'}
               color={COLOR_YELLOW}
             />
+            <CareNotes items={diagnosis.considerations} />
           </View>
         )}
 
-        {diagnosis.resources.length > 1 && (
+        {diagnosis.resources.length > 0 && (
           <View>
             <SectionTitle
               title={'Resources'}
               color={COLOR_GREEN}
             />
+            <Resources resources={diagnosis.resources} />
           </View>
         )}
       </ScrollView>

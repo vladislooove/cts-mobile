@@ -10,7 +10,6 @@ export default StyleSheet.create({
     backgroundColor: COLOR_WHITE,
   },
   titleWrapper: {
-    paddingHorizontal: 20,
     paddingVertical: 30,
   },
   scrollContainer: {

@@ -46,7 +46,7 @@ export interface Diagnosis {
 
 export interface RecommendationConsideration {
   additionalNote: string;
-  cancer: Cancer;
+  cancer?: Cancer;
   cancerCategory: null;
   cancerId: null;
   ccgs: null;

@@ -15,10 +15,13 @@ export const setFactors = (factors: Factor[]): SetFactorsActionType => ({
 });
 
 export const submitFactors = (
-  factors: { [key: string]: boolean | string },
+  data: {
+    factors: { [key: string]: boolean | string };
+    categories: string[];
+  },
 ): SubmitFactorsActionType => ({
   type: SUBMIT_FACTORS,
-  payload: factors,
+  payload: data,
 });
 
 export const setDiagnosis = (data: Diagnosis): SetDiagnosisActionType => ({

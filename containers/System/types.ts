@@ -17,7 +17,8 @@ export interface SetFactorsActionType {
 export interface SubmitFactorsActionType {
   type: typeof SUBMIT_FACTORS;
   payload: {
-    [key: string]: boolean | string;
+    factors: { [key: string]: boolean | string };
+    categories: string[];
   }
 }
 
