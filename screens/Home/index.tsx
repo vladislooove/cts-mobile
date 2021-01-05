@@ -1,7 +1,7 @@
 // Libs
 import React, { FC, useState } from 'react';
 import { View, ImageBackground, Text } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Utils
 import { useInjectSaga } from '../../hooks/reduxInjectors';
@@ -21,6 +21,9 @@ import saga from './sagas';
 // Actions
 import { login } from './actions';
 
+// Selectors
+import { loading$ } from '../../containers/App/selectors';
+
 // Services
 import navigationService from '../../services/navigation';
 
@@ -39,6 +42,7 @@ export const Home: FC = () => {
   useInjectSaga({ key: HOME_SAGA, saga });
 
   const dispatch = useDispatch();
+  const isLoading = useSelector(loading$);
 
   const handleLogin = () => {
     if (isLoginFormVisible) {
@@ -111,6 +115,7 @@ export const Home: FC = () => {
               <Button
                 title="Sign Up"
                 onPress={handleSignup}
+                disabled={isLoading}
               />
             </View>
             <View style={styles.buttonWrapper}>

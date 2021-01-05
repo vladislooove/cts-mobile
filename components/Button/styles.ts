@@ -27,5 +27,12 @@ export default StyleSheet.create({
   },
   textPrimary: {
     color: COLOR_WHITE,
+  },
+  wrapperDisabled: {
+    backgroundColor: 'rgba(0, 0, 0, 0.25)',
+    elevation: 0,
+  },
+  textDisabled: {
+    color: 'rgba(0, 0, 0, 0.6)',
   }
 });

@@ -9,12 +9,14 @@ import Title from '../../components/Title';
 import Button from '../../components/Button';
 import SearchInput from '../../components/SearchInput';
 import FactorsList from './components/FactorsList';
+import { Next } from '../../components/icons';
 
 // Containers
 import SystemContainer from '../../containers/System';
 
 // Styles
 import styles from './styles';
+import { COLOR_WHITE } from '../../styles/constants';
 
 // Actions
 import { submitFactors }  from '../../containers/System/actions';
@@ -90,7 +92,18 @@ export const Search: FC = () => {
                 title="Next"
                 primary
                 onPress={onSubmitForm}
-              />
+                iconRight
+              >
+                <Next
+                  width={17}
+                  height={17}
+                  fill={COLOR_WHITE}
+                  style={{
+                    marginLeft: 15,
+                    marginRight: 5,
+                  }}
+                />
+              </Button>
             </View>
           )}
         </View>

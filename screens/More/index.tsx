@@ -1,12 +1,13 @@
 // Libs
 import React, { FC } from 'react';
-import { View, TouchableNativeFeedback, Text, Button, Alert } from 'react-native';
+import { View, TouchableNativeFeedback, Text, Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 // Components
 import Navigation from '../../components/Navigation';
 import Title from '../../components/Title';
-import { About, ArrowRight, Governance, Contact, Resources, User } from '../../components/icons';
+import Button from '../../components/Button';
+import { About, ArrowRight, Governance, Contact, Resources, User, Logout } from '../../components/icons';
 
 // Utils
 import { useInjectSaga } from '../../hooks/reduxInjectors'
@@ -23,7 +24,7 @@ import { MORE_SAGA } from './constants';
 
 // Styles
 import styles from './styles';
-import { COLOR_PRIMARY } from '../../styles/constants';
+import { COLOR_PRIMARY, COLOR_WHITE } from '../../styles/constants';
 
 // Services
 import navigationService from '../../services/navigation';
@@ -131,7 +132,18 @@ export const More: FC = () => {
           <Button
             title={'Logout'}
             onPress={handleLogout}
-          />
+            primary
+          >
+            <Logout
+              width={20}
+              height={20}
+              fill={COLOR_WHITE}
+              style={{
+                marginLeft: 15,
+                marginRight: 5,
+              }}
+            />
+          </Button>
         </View>
       </View>
     </View>

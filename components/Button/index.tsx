@@ -15,23 +15,28 @@ export const Button: FC<ButtonProps> = ({
   children,
   title,
   onPress,
+  iconRight,
+  disabled,
 }) => {
-  const wrapperStyles = primary
+  let wrapperStyles = primary
     ? { ...styles.wrapper, ...styles.wrapperPrimary }
     : styles.wrapper;
-  const textStyles = primary
+  wrapperStyles = disabled ? { ...wrapperStyles, ...styles.wrapperDisabled} : wrapperStyles;
+  let textStyles = primary
     ? { ...styles.text, ...styles.textPrimary }
     : styles.text;
+  textStyles = disabled ? { ...textStyles, ...styles.textDisabled } : textStyles;
 
   return (
     <View style={wrapperStyles}>
       <TouchableNativeFeedback
         background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)')}
-        onPress={onPress}
+        onPress={disabled ? undefined : onPress}
       >
         <View style={styles.innerContent}>
-          {children}
+          {!iconRight && children}
           {title && <Text style={textStyles}>{title}</Text>}
+          {iconRight && children}
         </View>
       </TouchableNativeFeedback>
     </View>

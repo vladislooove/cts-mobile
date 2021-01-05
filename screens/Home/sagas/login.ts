@@ -27,7 +27,12 @@ export default function* login({ payload }: LoginActionType) {
     yield put(setAuth(true));
     yield AsyncStorage.setItem('accessToken', accessToken);
     yield AsyncStorage.setItem('refreshToken', refreshToken);
-    yield call([navigationService, navigationService.navigate], DASHBOARD_SCREEN);
+    yield call([navigationService, navigationService.reset], {
+      index: 0,
+      routes: [
+        { name: DASHBOARD_SCREEN },
+      ],
+    });
   } else if (status === 401) {
     Alert.alert(
       '',

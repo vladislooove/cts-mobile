@@ -5,4 +5,5 @@ export interface ButtonProps extends ViewProps {
   primary?: boolean;
   disabled?: boolean;
   title?: string;
+  iconRight?: boolean;
 }

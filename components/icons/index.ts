@@ -15,3 +15,5 @@ export { default as EyeThrough } from './EyeThrough';
 export { default as Checkmark } from './Checkmark';
 export { default as Female } from './Female';
 export { default as Male } from './Male';
+export { default as Next } from './Next';
+export { default as Logout } from './Logout';

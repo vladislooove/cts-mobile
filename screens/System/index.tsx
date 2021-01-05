@@ -11,6 +11,7 @@ import Button from '../../components/Button';
 
 // Containers
 import SystemContainer from '../../containers/System';
+import { Next } from '../../components/icons';
 
 // Constants
 import { SYSTEM_CATEGORIES } from './constants';
@@ -21,6 +22,7 @@ import navigationService from '../../services/navigation';
 
 // Styles
 import styles from './styles';
+import { COLOR_WHITE } from '../../styles/constants';
 
 export const System: FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -65,7 +67,17 @@ export const System: FC = () => {
         </ScrollView>
         {selectedCategories.length > 0 && (
           <View style={styles.footer}>
-            <Button title="Next" primary onPress={onNextPress} />
+            <Button title="Next" primary onPress={onNextPress} iconRight>
+              <Next
+                width={17}
+                height={17}
+                fill={COLOR_WHITE}
+                style={{
+                  marginLeft: 15,
+                  marginRight: 5,
+                }}
+              />
+            </Button>
           </View>
         )}
       </View>
