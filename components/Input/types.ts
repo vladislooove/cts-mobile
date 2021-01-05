@@ -1,4 +1,3 @@
-import { ReactChild } from 'react';
 // Types
 import { TextInputProps } from 'react-native';
 

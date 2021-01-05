@@ -28,7 +28,10 @@ import navigationService from '../../services/navigation';
 // Styles
 import styles from './styles';
 
-export const Navigation: FC = () => {
+// Types
+import { NavigationProps } from './types';
+
+export const Navigation: FC<NavigationProps> = ({ hideInternalMenu }) => {
   const routes = useNavigationState((state) => state.routes);
   const activeScreen = routes[routes.length - 1]?.name;
 
@@ -61,62 +64,64 @@ export const Navigation: FC = () => {
           />
         )}
       </View>
-      <View style={styles.linksWrapper}>
-        <View style={getLinkStyle(activeScreen === DASHBOARD_SCREEN)}>
-          <TouchableNativeFeedback
-            onPress={() => onLinkClick(DASHBOARD_SCREEN)}
-            background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
-          >
-            <View style={styles.menuLinkInner}>
-              <Home {...getSvgIconProps(activeScreen === DASHBOARD_SCREEN)} />
-            </View>
-          </TouchableNativeFeedback>
+      {!hideInternalMenu && (
+        <View style={styles.linksWrapper}>
+          <View style={getLinkStyle(activeScreen === DASHBOARD_SCREEN)}>
+            <TouchableNativeFeedback
+              onPress={() => onLinkClick(DASHBOARD_SCREEN)}
+              background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
+            >
+              <View style={styles.menuLinkInner}>
+                <Home {...getSvgIconProps(activeScreen === DASHBOARD_SCREEN)} />
+              </View>
+            </TouchableNativeFeedback>
+          </View>
+          <View style={getLinkStyle([SYSTEM_SCREEN, RISK_ASSESSMENT_SCREEN, RESULTS_SCREEN].includes(activeScreen))}>
+            <TouchableNativeFeedback
+              onPress={() => onLinkClick(SYSTEM_SCREEN)}
+              background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
+            >
+              <View style={styles.menuLinkInner}>
+                <System {...getSvgIconProps(activeScreen === SYSTEM_SCREEN)} />
+              </View>
+            </TouchableNativeFeedback>
+          </View>
+          <View style={getLinkStyle(activeScreen === SEARCH_SCREEN)}>
+            <TouchableNativeFeedback
+              onPress={() => onLinkClick(SEARCH_SCREEN)}
+              background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
+            >
+              <View style={styles.menuLinkInner}>
+                <Search {...getSvgIconProps(activeScreen === SEARCH_SCREEN)} />
+              </View>
+            </TouchableNativeFeedback>
+          </View>
+          <View style={getLinkStyle([
+            MORE_SCREEN,
+            ABOUT_SCREEN,
+            GOVERNANCE_SCREEN,
+            CONTACT_SCREEN,
+            RESOURCES_SCREEN,
+            ACCOUNT_SCREEN,
+          ].includes(activeScreen))}>
+            <TouchableNativeFeedback
+              onPress={() => onLinkClick(MORE_SCREEN)}
+              background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
+            >
+              <View style={styles.menuLinkInner}>
+                <More {...getSvgIconProps([
+                  MORE_SCREEN,
+                  ABOUT_SCREEN,
+                  GOVERNANCE_SCREEN,
+                  CONTACT_SCREEN,
+                  RESOURCES_SCREEN,
+                  ACCOUNT_SCREEN,
+                ].includes(activeScreen))} />
+              </View>
+            </TouchableNativeFeedback>
+          </View>
         </View>
-        <View style={getLinkStyle([SYSTEM_SCREEN, RISK_ASSESSMENT_SCREEN, RESULTS_SCREEN].includes(activeScreen))}>
-          <TouchableNativeFeedback
-            onPress={() => onLinkClick(SYSTEM_SCREEN)}
-            background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
-          >
-            <View style={styles.menuLinkInner}>
-              <System {...getSvgIconProps(activeScreen === SYSTEM_SCREEN)} />
-            </View>
-          </TouchableNativeFeedback>
-        </View>
-        <View style={getLinkStyle(activeScreen === SEARCH_SCREEN)}>
-          <TouchableNativeFeedback
-            onPress={() => onLinkClick(SEARCH_SCREEN)}
-            background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
-          >
-            <View style={styles.menuLinkInner}>
-              <Search {...getSvgIconProps(activeScreen === SEARCH_SCREEN)} />
-            </View>
-          </TouchableNativeFeedback>
-        </View>
-        <View style={getLinkStyle([
-          MORE_SCREEN,
-          ABOUT_SCREEN,
-          GOVERNANCE_SCREEN,
-          CONTACT_SCREEN,
-          RESOURCES_SCREEN,
-          ACCOUNT_SCREEN,
-        ].includes(activeScreen))}>
-          <TouchableNativeFeedback
-            onPress={() => onLinkClick(MORE_SCREEN)}
-            background={TouchableNativeFeedback.Ripple('rgba(0, 159, 227, 0.5)', true)}
-          >
-            <View style={styles.menuLinkInner}>
-              <More {...getSvgIconProps([
-                MORE_SCREEN,
-                ABOUT_SCREEN,
-                GOVERNANCE_SCREEN,
-                CONTACT_SCREEN,
-                RESOURCES_SCREEN,
-                ACCOUNT_SCREEN,
-              ].includes(activeScreen))} />
-            </View>
-          </TouchableNativeFeedback>
-        </View>
-      </View>
+      )}
     </View>
   );
 }
