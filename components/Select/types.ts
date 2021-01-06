@@ -5,6 +5,7 @@ export interface SelectProps {
   placeholder?: string;
   title?: string;
   disabled?: boolean;
+  hideLetters?: boolean;
 }
 
 export interface Option {

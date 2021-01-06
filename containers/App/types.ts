@@ -11,12 +11,14 @@ import {
   LOADING,
   SET_USER,
   USER,
+  SET_JOB_ROLES,, JOB_ROLES
 } from './constants';
 
 // Types
 import { Ccg } from '../../services/ccgs/types';
 import { Practice } from '../../services/practices/types';
 import { User } from '../../services/user/types';
+import { JobRole } from '../../services/jobRoles/types';
 
 // Action types
 export interface SetAuthActionType {
@@ -48,6 +50,11 @@ export interface SetUserActionType {
   payload: User;
 }
 
+export interface SetJobRolesActionType {
+  type: typeof SET_JOB_ROLES;
+  payload: JobRole[];
+}
+
 // Data interfaces
 export interface AppReducerState {
   [AUTHORIZED]: boolean;
@@ -55,4 +62,5 @@ export interface AppReducerState {
   [PRACTICES]: Practice[];
   [LOADING]: boolean;
   [USER]: null | User;
+  [JOB_ROLES]: JobRole[];
 }

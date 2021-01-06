@@ -6,6 +6,7 @@ import {
   SET_PRACTICES,
   SET_LOADING,
   SET_USER,
+  SET_JOB_ROLES,
 } from './constants';
 
 // Types
@@ -16,10 +17,12 @@ import {
   SetPracticesActionType,
   SetLoadingActionType,
   SetUserActionType,
+  SetJobRolesActionType,
 } from './types';
 import { Ccg } from '../../services/ccgs/types';
 import { Practice } from '../../services/practices/types';
 import { User } from '../../services/user/types';
+import { JobRole } from '../../services/jobRoles/types';
 
 export const setAuth = (payload: boolean): SetAuthActionType => ({
   type: SET_AUTH,
@@ -48,4 +51,9 @@ export const setLoading = (payload: boolean): SetLoadingActionType => ({
 export const setUser = (user: User): SetUserActionType => ({
   type: SET_USER,
   payload: user,
+});
+
+export const setJobRoles = (payload: JobRole[]): SetJobRolesActionType => ({
+  type: SET_JOB_ROLES,
+  payload,
 });

@@ -10,6 +10,7 @@ export const SET_CCGS = `${APP_PREFIX}/SET_CCGS`;
 export const SET_PRACTICES = `${APP_PREFIX}/SET_PRACTICES`;
 export const SET_LOADING = `${APP_PREFIX}/SET_LOADING`;
 export const SET_USER = `${APP_PREFIX}/SET_USER`;
+export const SET_JOB_ROLES = `${APP_PREFIX}/SET_JOB_ROLES`;
 
 // State
 export const AUTHORIZED = 'AUTHORIZED';
@@ -17,3 +18,5 @@ export const CCGS = 'CCGS';
 export const PRACTICES = 'PRACTICES';
 export const LOADING = 'LOADING';
 export const USER = 'USER';
+export const JOB_ROLES = 'JOB_ROLES';
+

@@ -23,6 +23,7 @@ export const Select: FC<SelectProps> = ({
   placeholder,
   title,
   disabled,
+  hideLetters,
 }) => {
   const [isListVisible, setIsListVisible] = useState(false);
 
@@ -75,7 +76,7 @@ export const Select: FC<SelectProps> = ({
                 </TouchableNativeFeedback>
               </View>
             )}
-            renderCustomSectionHeader={(section) => (
+            renderCustomSectionHeader={(section) => hideLetters ? null : (
               <View style={styles.title}>
                 <SectionTitle title={section.title} color={COLOR_SECONDARY} round />
               </View>

@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { call, put } from 'redux-saga/effects';
 
 // Actions
-import { setAuth, setCcgs, setPractices, setLoading, setUser } from '../actions';
+import { setAuth, setCcgs, setPractices, setLoading, setUser, setJobRoles } from '../actions';
 
 // Constants
 import { DASHBOARD_SCREEN } from '../../../configs/routing/constants';
@@ -13,6 +13,7 @@ import { DASHBOARD_SCREEN } from '../../../configs/routing/constants';
 // Services
 import ccgService from '../../../services/ccgs';
 import practicesService from '../../../services/practices';
+import jobRolesService from '../../../services/jobRoles';
 import navigationService from '../../../services/navigation';
 import userService from '../../../services/user';
 
@@ -37,7 +38,10 @@ export default function* initApp() {
 
   const { response: ccgs } = yield call([ccgService, ccgService.getAll]);
   const { response: practices } = yield call([practicesService, practicesService.getAll]);
+  const { response: jobRoles } = yield call([jobRolesService, jobRolesService.getAll]);
+
   yield put(setCcgs(ccgs));
   yield put(setPractices(practices));
+  yield put(setJobRoles(jobRoles));
   yield put(setLoading(false));
 }

@@ -10,6 +10,8 @@ import {
   SET_LOADING,
   USER,
   SET_USER,
+  SET_JOB_ROLES,
+  JOB_ROLES,
 } from './constants';
 
 // Types
@@ -20,6 +22,7 @@ import {
   SetPracticesActionType,
   SetLoadingActionType,
   SetUserActionType,
+  SetJobRolesActionType,
 } from './types';
 
 const initialState = {
@@ -28,6 +31,7 @@ const initialState = {
   [PRACTICES]: [],
   [LOADING]: false,
   [USER]: null,
+  [JOB_ROLES]: [],
 };
 
 export default (
@@ -36,6 +40,8 @@ export default (
   | SetCcgsActionType
   | SetPracticesActionType
   | SetUserActionType
+  | SetLoadingActionType
+  | SetJobRolesActionType
 ) => {
   switch (type) {
     case SET_AUTH:
@@ -62,6 +68,11 @@ export default (
       return {
         ...state,
         [USER]: payload,
+      };
+    case SET_JOB_ROLES:
+      return {
+        ...state,
+        [JOB_ROLES]: payload,
       };
     default:
       return state;

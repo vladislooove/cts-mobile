@@ -2,7 +2,7 @@
 import { StyleSheet } from 'react-native';
 
 // Styles
-import { COLOR_WHITE } from '../../styles/constants';
+import { COLOR_GRAY, COLOR_WHITE } from '../../styles/constants';
 
 export default StyleSheet.create({
   wrapper: {
@@ -18,4 +18,23 @@ export default StyleSheet.create({
   sectionTitleWrapper: {
     marginBottom: 20,
   },
+  note: {
+    fontSize: 15,
+    color: COLOR_GRAY,
+    marginBottom: 20,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    marginHorizontal: -5,
+    marginBottom: 20,
+  },
+  buttonCol: {
+    width: '50%',
+    paddingHorizontal: 5,
+  },
+  footer: {
+    paddingVertical: 20,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  }
 });
