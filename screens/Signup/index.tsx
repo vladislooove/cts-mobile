@@ -1,6 +1,6 @@
 // Libs
 import React, { FC, useState, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { View, ScrollView, Text, Linking } from 'react-native';
 
 // Components
@@ -13,8 +13,20 @@ import PasswordInput from '../../components/PasswordInput';
 import Button from '../../components/Button';
 import Checkbox from '../../components/Checkbox';
 
+// Constants
+import { SIGNUP_SAGA } from './constants';
+
 // Selectors
 import { ccgs$, practices$, jobRoles$ } from '../../containers/App/selectors';
+
+// Hooks
+import { useInjectSaga } from '../../hooks/reduxInjectors';
+
+// Saga
+import saga from './sagas';
+
+// Actions
+import { signUp } from './actions';
 
 // Styles
 import styles from './styles';
@@ -24,6 +36,8 @@ import { COLOR_SECONDARY } from '../../styles/constants';
 import { Option } from '../../components/Select/types';
 
 export const Signup: FC = () => {
+  useInjectSaga({ key: SIGNUP_SAGA, saga });
+  const dispatch = useDispatch();
   const ccgs = useSelector(ccgs$);
   const practices = useSelector(practices$);
   const jobRoles = useSelector(jobRoles$);
@@ -85,7 +99,19 @@ export const Signup: FC = () => {
     && isAcceptingTerms;
 
   const onFormSubmit = () => {
-
+    dispatch(signUp({
+      name: firstName,
+      surname,
+      ccg,
+      practiceId: practice,
+      jobRole,
+      email,
+      password,
+      signUpInfo: {
+        client: 'ANDROID',
+        integration: 'NONE',
+      },
+    }));
   };
 
   return (

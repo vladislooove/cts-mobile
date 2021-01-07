@@ -4,6 +4,7 @@ import { Response } from '../types';
 export interface IUserService {
   login: (data: LoginPayload) => Promise<Response<LoginResponse>>;
   getUser: () => Promise<Response<User>>;
+  signUp: (data: SignUpPayload) => Promise<Response<any>>;
 }
 
 export interface LoginPayload {
@@ -17,6 +18,22 @@ export interface LoginResponse {
   irrelevantAgreements: string[];
   refreshToken: string;
   tokenType: string;
+}
+
+export interface SignUpPayload {
+  email: string;
+  password: string;
+  name: string;
+  surname: string;
+  practiceId: string;
+  practiceBranchId: string;
+  jobRole: string;
+  userRole: string;
+  ccg: string;
+  signUpInfo: {
+    client: 'ANDROID',
+    integration: 'NONE',
+  };
 }
 
 export interface User {
