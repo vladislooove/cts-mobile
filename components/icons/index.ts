@@ -17,3 +17,6 @@ export { default as Female } from './Female';
 export { default as Male } from './Male';
 export { default as Next } from './Next';
 export { default as Logout } from './Logout';
+export { default as Email } from './Email';
+export { default as Notebook } from './Notebook';
+export { default as Phone } from './Phone';
