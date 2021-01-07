@@ -36,12 +36,36 @@ export default function* initApp() {
     yield put(setUser(user));
   }
 
-  const { response: ccgs } = yield call([ccgService, ccgService.getAll]);
-  const { response: practices } = yield call([practicesService, practicesService.getAll]);
-  const { response: jobRoles } = yield call([jobRolesService, jobRolesService.getAll]);
+  const cachedCCGS = yield AsyncStorage.getItem('ccgs');
+  const cachedPractices = yield AsyncStorage.getItem('practices');
+  const cachedJobRoles = yield AsyncStorage.getItem('jobRoles');
 
-  yield put(setCcgs(ccgs));
-  yield put(setPractices(practices));
-  yield put(setJobRoles(jobRoles));
+  if (!cachedCCGS) {
+    const { response } = yield call([ccgService, ccgService.getAll]);
+    yield put(setCcgs(response));
+    yield AsyncStorage.setItem('ccgs', JSON.stringify(response));
+  } else {
+    const ccgs = yield AsyncStorage.getItem('ccgs');
+    yield put(setCcgs(JSON.parse(ccgs)));
+  }
+
+  if (!cachedPractices) {
+    const { response } = yield call([practicesService, practicesService.getAll]);
+    yield put(setPractices(response));
+    yield AsyncStorage.setItem('practices', JSON.stringify(response));
+  } else {
+    const practices = yield AsyncStorage.getItem('practices');
+    yield put(setPractices(JSON.parse(practices)));
+  }
+
+  if (!cachedJobRoles) {
+    const { response } = yield call([jobRolesService, jobRolesService.getAll]);
+    yield put(setJobRoles(response));
+    yield AsyncStorage.setItem('jobRoles', JSON.stringify(response));
+  } else {
+    const jobRoles = yield AsyncStorage.getItem('jobRoles');
+    yield put(setJobRoles(JSON.parse(jobRoles)));
+  }
+
   yield put(setLoading(false));
 }
