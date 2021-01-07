@@ -110,6 +110,7 @@ export const Signup: FC = () => {
       signUpInfo: {
         client: 'ANDROID',
         integration: 'NONE',
+        softwareAgent: '7.0.0',
       },
     }));
   };

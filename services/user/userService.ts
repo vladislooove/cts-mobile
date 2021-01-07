@@ -57,12 +57,10 @@ export default class UserService implements IUserService {
   }
 
   public async signUp(body: SignUpPayload) {
-    const token = await AsyncStorage.getItem('accessToken');
     const response = await fetch(`${BASE_URL}/api/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify(body),
     });

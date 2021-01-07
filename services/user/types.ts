@@ -33,6 +33,7 @@ export interface SignUpPayload {
   signUpInfo: {
     client: 'ANDROID',
     integration: 'NONE',
+    softwareAgent: string;
   };
 }
 
