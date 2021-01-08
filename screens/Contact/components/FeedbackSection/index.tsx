@@ -1,16 +1,21 @@
 // Libs
 import React, { FC, useState } from 'react';
 import { View, Text } from 'react-native';
+import { useDispatch } from 'react-redux';
 
 // Components
 import Checkbox from '../../../../components/Checkbox';
 import Input from '../../../../components/Input';
 import Button from '../../../../components/Button';
 
+// Actions
+import { sendFeedback } from '../../actions';
+
 // Styles
 import styles from './styles';
 
 export const FeedbackSection: FC = () => {
+  const dispatch = useDispatch();
   const [selectedCheckbox, setSelectedCheckbox] = useState(0);
   const [comment, setComment] = useState('');
 
@@ -18,7 +23,25 @@ export const FeedbackSection: FC = () => {
   const isFormValid = comment && selectedCheckbox !== 0;
 
   const onFormSubmit = () => {
+    let subject = '';
 
+    switch (selectedCheckbox) {
+      case 1:
+        subject = 'Technical problem';
+        break;
+      case 2:
+        subject = 'General feedback';
+        break;
+      case 3:
+      default:
+        subject = 'Other';
+        break;
+    }
+
+    dispatch(sendFeedback({
+      subject,
+      comment,
+    }))
   };
 
   return (

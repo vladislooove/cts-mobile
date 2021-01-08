@@ -9,11 +9,22 @@ import Title from '../../components/Title';
 import { Notebook, Phone, Email } from '../../components/icons';
 import FeedbackSection from './components/FeedbackSection';
 
+// Hooks
+import { useInjectSaga } from '../../hooks/reduxInjectors';
+
+// Saga
+import saga from './sagas';
+
+// Constants
+import { CONTACT_SAGA } from './constants';
+
 // Styles
 import styles from './styles';
 import { COLOR_PRIMARY } from '../../styles/constants';
 
 export const Contact: FC = () => {
+  useInjectSaga({ key: CONTACT_SAGA, saga });
+
   const [isFeedbackSectionVisible, setIsFeedbackSectionVisible] = useState(false);
   const onPhoneClick = () => Linking.openURL('tel:+442071579656');
   const onEmailClick = () => Linking.openURL('mailto:info@cthesigns.co.uk');

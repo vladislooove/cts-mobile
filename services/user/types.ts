@@ -5,6 +5,7 @@ export interface IUserService {
   login: (data: LoginPayload) => Promise<Response<LoginResponse>>;
   getUser: () => Promise<Response<User>>;
   signUp: (data: SignUpPayload) => Promise<Response<any>>;
+  sendFeedback: (data: FeedbackPayload) => Promise<Response<any>>;
 }
 
 export interface LoginPayload {
@@ -35,6 +36,11 @@ export interface SignUpPayload {
     integration: 'NONE',
     softwareAgent: string;
   };
+}
+
+export interface FeedbackPayload {
+  subject: string;
+  comment: string;
 }
 
 export interface User {
