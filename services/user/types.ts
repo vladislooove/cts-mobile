@@ -6,6 +6,7 @@ export interface IUserService {
   getUser: () => Promise<Response<User>>;
   signUp: (data: SignUpPayload) => Promise<Response<any>>;
   sendFeedback: (data: FeedbackPayload) => Promise<Response<any>>;
+  patchUser: (data: Partial<User>) => Promise<Response<User>>;
 }
 
 export interface LoginPayload {

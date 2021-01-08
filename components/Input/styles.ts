@@ -15,7 +15,6 @@ export default StyleSheet.create({
     borderRadius: 5,
     borderColor: COLOR_LIGHT_GRAY,
     borderWidth: 1.5,
-    textAlignVertical: 'top',
   },
   inputFocused: {
     borderColor: COLOR_GRAY,

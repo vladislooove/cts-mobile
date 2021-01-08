@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BASE_URL } from '../constants';
 
 // Types
-import { FeedbackPayload, IUserService, LoginPayload, SignUpPayload } from './types';
+import { FeedbackPayload, IUserService, LoginPayload, SignUpPayload, User } from './types';
 
 export default class UserService implements IUserService {
   public async login({ email, password }: LoginPayload) {
@@ -61,6 +61,31 @@ export default class UserService implements IUserService {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    const status = response.status;
+    let result = null;
+    
+    try {
+      result = await response.json();
+    } catch {
+      result = null;
+    }
+
+    return {
+      status,
+      response: result,
+    };
+  }
+
+  public async patchUser(body: Partial<User>) {
+    const token = await AsyncStorage.getItem('accessToken');
+    const response = await fetch(`${BASE_URL}/user/`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify(body),
     });
