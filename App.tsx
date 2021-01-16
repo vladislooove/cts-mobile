@@ -1,19 +1,40 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+// Libs
+import React, { ReactElement } from 'react';
+import { StatusBar } from 'react-native';
+import { Provider } from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
+// Store
+import store from './store';
+
+// Screens
+import screens from './configs/routing/config';
+
+// Services
+import navigationService from './services/navigation';
+
+// Containers
+import App from './containers/App';
+
+// Styles
+import { COLOR_SECONDARY } from './styles/constants';
+
+const Stack = createStackNavigator();
+
+export default function Application(): ReactElement {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      <App>
+        <StatusBar backgroundColor={COLOR_SECONDARY} />
+        <NavigationContainer ref={navigationService.ref}>
+          <Stack.Navigator screenOptions={{ header: () => null }}>
+            {Object.entries(screens).map(([name, props]) => (
+              <Stack.Screen name={name} key={name} {...props} />
+            ))}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </App>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
